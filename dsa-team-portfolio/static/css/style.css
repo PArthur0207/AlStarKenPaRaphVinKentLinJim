@@ -119,50 +119,37 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 80px;
+  padding: 10px 5%;
+  flex: wrap;
 }
 
 
 .index-text {
   text-align: center;
   position: relative;
-  left: -55px;
   text-transform:uppercase;
-  padding-bottom: 200px;
+  padding-bottom: 2rem;
+  flex: 1;
 }
 
 .index-text h1 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     color: #8abdff;
-    letter-spacing: 3px;
+    letter-spacing: 0.2rem;
 }
 
 .index-text h2 {
     font-size: 0.8rem;
-    letter-spacing: 5px;
+    letter-spacing: 0.3rem;
     color: white;
     
 }
 
 .index-pic {
     position: relative;
-    height: 700px;
-    width: 900px;
-    flex-shrink: 0;
-    display: flex;              
-    justify-content: center;    
-    align-items: center;        
-    margin: 0 auto;             
-    border-radius: 30px;
-    overflow: hidden;          
-    background-color:#2a4d69;
-
-}
-
-.index-pic {
-    position: relative;
-    height: 700px;
-    width: 900px;
+    height: 100%;
+    max-width: 900px;
+    aspect-ratio: 16/9;
     flex-shrink: 0;
     display: flex;              
     justify-content: center;    
