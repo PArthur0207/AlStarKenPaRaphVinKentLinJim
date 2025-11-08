@@ -128,7 +128,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
   text-align: center;
   text-transform:uppercase;
   flex: 1;
-  justify-content: flex-start;
+    justify-content: flex-start;
   flex-direction: column;
   display: flex;
   position: absolute;
@@ -158,8 +158,6 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     1px 25px 40px rgba(16, 16, 16, 0.3),
     1px 30px 80px rgba(16, 16, 16, 0.3);
     z-index: 2;
-    
-
 }
 
 .index-text h2 {
@@ -176,8 +174,6 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     1px 20px 20px rgba(16, 16, 16, 0.3),
     1px 25px 40px rgba(16, 16, 16, 0.3),
     1px 30px 80px rgba(16, 16, 16, 0.3);
-
-    
 }
 
 .index-pic img{
