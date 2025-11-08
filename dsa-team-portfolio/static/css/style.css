@@ -139,7 +139,6 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     
 }
 
-<<<<<<< HEAD
 /* Contact */
 .contact-list {
     display: flex;
@@ -176,12 +175,10 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 .contact-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 14px 30px rgba(2,6,23,0.12);
-=======
+}
 .index-pic img {
     float:right;
     height: 500px;
     width: 500px;
     margin-left: 200px;
-
->>>>>>> 842212c857c341f1fa5b7eb1c91d79469049de55
 }
