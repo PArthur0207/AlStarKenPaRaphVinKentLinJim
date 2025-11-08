@@ -119,17 +119,19 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 5%;
+  padding: 5px 5%;
   flex: wrap;
 }
 
 
 .index-text {
   text-align: center;
-  position: relative;
   text-transform:uppercase;
-  padding-bottom: 2rem;
   flex: 1;
+  justify-content: flex-start;
+  flex-direction: column;
+  display: flex;
+  transform: translateY(-10rem);
 }
 
 .index-text h1 {
@@ -149,7 +151,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     position: relative;
     height: 100%;
     max-width: 900px;
-    aspect-ratio: 16/9;
+    aspect-ratio: 5/4;
     flex-shrink: 0;
     display: flex;              
     justify-content: center;    
@@ -157,7 +159,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     margin: 0 auto;             
     border-radius: 30px;
     overflow: hidden;          
-    background-color:#2a4d69;
+    
 
 }
 
