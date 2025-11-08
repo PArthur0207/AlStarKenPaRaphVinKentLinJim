@@ -181,7 +181,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     top:3;
     right: 0;
     height: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     aspect-ratio: 5/4;
     flex-shrink: 0;
     display: block;   
@@ -231,4 +231,62 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 .contact-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 14px 30px rgba(2,6,23,0.12);
+}
+
+
+/* =============
+   Queue styles
+   =============*/
+
+.queue-container {
+    max-width: 1500px;
+    margin: 2rem auto;
+    padding: 18px;
+    background: #2c334752;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(2,6,23,0.06);
+}
+
+.queue-container h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1000%;
+    color: #1f43e1;
+}
+
+.queue-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #1f43e1; 
+}
+
+.queue-container p {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.queue-container form {
+    padding: 12px 14px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(2,6,23,0.04);
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.queue-list li:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(2,6,23,0.12);
+    background: #f6fbff;
+}
+
+.queue-list li a {
+    color: #67a9ff; 
+    text-decoration: none;
+}
+
+.queue-list li a:hover {
+    text-decoration: underline;
 }
