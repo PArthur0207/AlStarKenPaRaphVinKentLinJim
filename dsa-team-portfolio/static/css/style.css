@@ -21,8 +21,8 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 }
 
 .navbar {
-    background: #8abdff;
-    padding: 1rem;
+    background: #0000008f;
+    padding: 0.5rem;
     color: white;
     width: 100%;
     display: flex;
@@ -34,23 +34,25 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #021569;
+    color: #0e3aff;
 }
 
 .nav-list {
     list-style: none;
     display: flex;
+    gap: 1rem;
     margin: 0;
     padding: 0;
+    margin-right: 0.75rem;
 }
 
 .nav-list li {
-    margin-left: 5rem;
+    margin-left: 2rem;
 }
 
 .nav-list a {
-    color: #021569;
-    font-size: 250%;
+    color: #092bc4;
+    font-size: 125%;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -216,7 +218,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 .contact-card h2 {
     font-size: 1.6rem;
     margin: 0 0 8px 0;
-    color: #1f43e1;
+    color: #001bff;
 }
 
 .contact-card a {
@@ -233,6 +235,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     box-shadow: 0 14px 30px rgba(2,6,23,0.12);
 }
 
+<<<<<<< HEAD
 
 /* =============
    Queue styles
@@ -290,3 +293,77 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 .queue-list li a:hover {
     text-decoration: underline;
 }
+=======
+/*Works*/
+.container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:2rem
+}
+
+.work-card{
+    background: #2c334752;
+    padding:1rem;
+    border-radius:12px;
+    text-align:center
+}
+
+.container .work-card h2,
+.container .work-card h4 {
+    color: #9fa9d4;
+}
+
+.container .work-card p {
+    color: #67a9ff;
+}
+
+
+.works{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1  rem;
+    margin-top: 2rem;
+}
+.work {
+    background: rgba(0 20 255 / 13%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-action {
+    margin-top: auto;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.work h4 {
+    margin: 0 0 1rem;
+    color: #fff;
+}
+
+.work p {
+    color: var(--muted);
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+}
+.try-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+    min-width: 160px;
+    text-align: center;
+}
+
+.try-button {
+    background: #052fa5;
+    color: rgb(158 193 227);
+}
+>>>>>>> ca5f61a610575a1b7236856102e1e36f99d419e8

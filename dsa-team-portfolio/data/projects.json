@@ -1,0 +1,7 @@
+[
+  {
+    "title": "Customer Queue Management System",
+    "description": "A queue system that prioritizes customers based on their state (e.g., Regular or Priority). It manages customer order, serving, and insertion using a custom doubly-ended queue structure.",
+    "url": "/queue"
+  }
+]

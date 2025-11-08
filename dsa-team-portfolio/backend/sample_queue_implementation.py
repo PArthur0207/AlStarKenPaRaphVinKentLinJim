@@ -11,7 +11,7 @@ class CustomerQueue:
         new_node.next = node.next
         node.next = new_node
         if new_node.next is None:
-            self.ttail = new_node
+            self.tail = new_node
 
     def add_customer(self, name, state):
         self.customer_state[name] = state

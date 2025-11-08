@@ -16,7 +16,14 @@ def about():
 
 @app.route('/works')
 def works():
-    return render_template('works.html')
+    data_file = os.path.join(app.root_path, 'data', 'projects.json')
+    works = []
+    try:
+        with open(data_file, 'r', encoding='utf-8') as f:
+            works = json.load(f)
+    except Exception:
+        works = []
+    return render_template('works.html', works = works)
 
 @app.route('/queue')
 @app.route('/queue', methods=["GET", "POST"])
