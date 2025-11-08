@@ -106,6 +106,13 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
   padding: 100px 80px;
 }
 
+
+.index-text {
+  display: inline-block;
+  text-align: center;
+  left: -100px;
+}
+
 .index-text h1 {
     font-size: 3rem;
     color: #49e0e8;
@@ -116,4 +123,5 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     letter-spacing: 5px;
     text-transform:uppercase;
     color: white;
+    
 }
