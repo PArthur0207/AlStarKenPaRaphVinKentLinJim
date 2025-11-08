@@ -1,7 +1,25 @@
 
 /* ==========================
-   TEMPORARY STYLE — ABOUT PAGE
+   Navigation Bar Styles
    ========================== */
+
+@font-face {
+    font-family: 'Genty Sans';
+    src: url('../fonts/genty-sans.woff2') format('woff2'),
+         url('../fonts/genty-sans.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Genty Sans';
+    src: url('../fonts/genty-sans-bold.woff2') format('woff2'),
+         url('../fonts/genty-sans-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
 
 * {
     margin: 0;
@@ -10,13 +28,13 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Genty Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #021569;
     min-height: 100vh;
 }
 
 .navbar {
-    background: #2c3e50;
+    background: #8abdff;
     padding: 1rem;
     color: white;
     width: 100%;
@@ -29,6 +47,7 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    color: #021569;
 }
 
 .nav-list {
@@ -43,13 +62,13 @@ body {
 }
 
 .nav-list a {
-    color: white;
+    color: #021569;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .nav-list a:hover {
-    color: #ddd;
+    color: #67a9ff;
 }
 
 .container {
