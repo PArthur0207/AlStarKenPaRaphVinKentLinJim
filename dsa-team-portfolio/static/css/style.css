@@ -114,3 +114,16 @@ body {
     background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
     transition: background 0.3s ease;
 }
+
+.index-section {
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 80px;
+}
+
+.index-text h1 {
+    font-size: 3rem;
+    color: #49e0e8;
+    text-shadow: 0 0 15px #49e0e8;
+}
