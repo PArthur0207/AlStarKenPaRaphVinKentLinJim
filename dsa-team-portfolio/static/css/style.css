@@ -133,6 +133,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 }
 
 .index-pic img {
+    float:right;
     height: 300px;
     width: 300px;
     left: 200px;
