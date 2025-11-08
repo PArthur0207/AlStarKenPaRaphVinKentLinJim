@@ -9,7 +9,10 @@
 
 body {
     font-family: 'Momo Trust Display', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background-color: #021569;
+    /* fallback color + background image (from ../image/blue_bg.jpg) */
+    background: #021569 url('../image/blue_bg.jpg') center/cover no-repeat fixed;
+    /* subtle blending so text remains readable over the image */
+    background-blend-mode: multiply;
     min-height: 100vh;
 }
 
