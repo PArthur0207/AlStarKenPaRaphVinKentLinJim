@@ -9,9 +9,15 @@
             <i class="fa-solid fa-hand-back-fist"></i> {{ c.name }}
         </h2>
         <div style="margin-top:12px; font-size:0.95rem; color:#334155;">
+            {% if c.github %}
             <div><a href="{{ c.github }}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></div>
+            {% endif %}
+            {% if c.email %}
             <div><a href="mailto:{{ c.email }}"><i class="fa-solid fa-envelope"></i> Email</a></div>
+            {% endif %}
+            {% if c.facebook %}
             <div><a href="{{ c.facebook }}" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a></div>
+            {% endif %}
         </div>
     </article>
     {% endfor %}
