@@ -114,7 +114,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 80px;
+  padding: 100px 80px;
 }
 
 
@@ -123,6 +123,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
   position: relative;
   left: -100px;
   text-transform:uppercase;
+  padding-bottom: 20px;
 }
 
 .index-text h1 {
