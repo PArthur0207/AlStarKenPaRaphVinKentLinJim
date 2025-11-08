@@ -107,6 +107,8 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     transition: background 0.3s ease;
 }
 
+/* Index */
+
 .hero {
     display: flex;
     align-items: center;
@@ -140,6 +142,36 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     letter-spacing: 5px;
     color: white;
     
+}
+
+.index-pic {
+    position: relative;
+    height: 700px;
+    width: 900px;
+    flex-shrink: 0;
+    display: flex;              
+    justify-content: center;    
+    align-items: center;        
+    margin: 0 auto;             
+    border-radius: 30px;
+    overflow: hidden;          
+    background-color:#2a4d69;
+
+}
+
+.index-pic {
+    position: relative;
+    height: 700px;
+    width: 900px;
+    flex-shrink: 0;
+    display: flex;              
+    justify-content: center;    
+    align-items: center;        
+    margin: 0 auto;             
+    border-radius: 30px;
+    overflow: hidden;          
+    background-color:#2a4d69;
+
 }
 
 /* Contact */
@@ -178,13 +210,4 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 .contact-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 14px 30px rgba(2,6,23,0.12);
-<<<<<<< HEAD
-}
-.index-pic img {
-    float:right;
-    height: 500px;
-    width: 500px;
-    margin-left: 200px;
-=======
->>>>>>> 9544933df344b57a3860ecf56ed1f6f92c4fc0b7
 }
