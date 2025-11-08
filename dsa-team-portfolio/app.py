@@ -16,5 +16,9 @@ def about():
 def works():
     return render_template('works.html')
 
+@app.route('/queue')
+def queue():
+    return render_template('queue.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
