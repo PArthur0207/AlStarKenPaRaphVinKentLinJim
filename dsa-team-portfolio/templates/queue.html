@@ -2,8 +2,35 @@
 
 {% block content %}
 <div class="hero-section">
-    <!-- TEMPORARY: This hero text is for testing only; change or remove before finalizing -->
-    <h1>TESTING (QUEUE) — Temporary Hero (change as needed)</h1>
-    <p>This hero section is temporary for testing. Feel free to change or remove before finalizing styles.</p>
+    <h1>Customer Queue</h1>
+
+    <form method="POST" style="margin-bottom: 20px;">
+        <label for="name">Customer Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="state">Customer State:</label>
+        <select id="state" name="state" required>
+            <option value="Regular">Regular</option>
+            <option value="Pregnant">Pregnant</option>
+            <option value="Senior">Senior</option>
+        </select>
+
+        <button type="submit" name="add_customer">Add Customer</button>
+    </form>
+
+    <form method="POST">
+        <button type="submit" name="serve_customer">Serve Next Customer</button>
+    </form>
+
+    <h2>Current Line:</h2>
+    <ul>
+        {% if line %}
+            {% for customer in line %}
+                <li>{{ customer }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No customers in line</li>
+        {% endif %}
+    </ul>
 </div>
 {% endblock %}

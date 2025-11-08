@@ -1,9 +1,10 @@
-from flask import Flask, render_template, send_from_directory
-from backend import Queue
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for
+from backend import *
 import json
 import os
 
 app = Flask(__name__)
+customer_queue = CustomerQueue()
 
 @app.route('/')
 def index():
@@ -16,9 +17,20 @@ def about():
 @app.route('/works')
 def works():
     return render_template('works.html')
+
 @app.route('/queue')
-def queue():
-    return render_template('queue.html')
+@app.route('/queue', methods=["GET", "POST"])
+def queue_page():
+    if request.method == "POST":
+        if "add_customer" in request.form:
+            name = request.form["name"]
+            state = request.form["state"]
+            customer_queue.add_customer(name, state)
+        elif "serve_customer" in request.form:
+            customer_queue.serve_customer()
+        return redirect(url_for("queue_page"))
+    
+    return render_template("queue.html", line=customer_queue.get_line())
 
 @app.route("/contact")
 def contacts_page():
