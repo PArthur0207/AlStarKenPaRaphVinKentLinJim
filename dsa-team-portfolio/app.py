@@ -16,6 +16,10 @@ def about():
 def works():
     return render_template('works.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 @app.route('/queue')
 def queue():
     return render_template('queue.html')

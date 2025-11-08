@@ -42,11 +42,12 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 }
 
 .nav-list li {
-    margin-left: 2rem;
+    margin-left: 5rem;
 }
 
 .nav-list a {
     color: #021569;
+    font-size: 250%;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -55,8 +56,12 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     color: #67a9ff;
 }
 
+/* ==========================
+   Main Container Styles
+   ========================== */
+   
 .container {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 2rem;
 }
