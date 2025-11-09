@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="index-section">
-    <section class="hero">  
-        <div class="index-pic">
-            <img src="static/image/indexpc.png">
-        </div>
-            <div class="index-text">
-                <h1>T(HAT)</h1>
-                    <h2>Group</h2>
-            </div>
-    </section>
-</div>
-    
-
+<section class="index-hero">
+  <div class="index-content">
+    <div class="index-text">
+      <h1>T(HAT)</h1>
+      <h2>Group</h2>
+    </div>
+    <div class="index-pic">
+      <img src="{{ url_for('static', filename='image/indexpc.png') }}" alt="T(HAT) Group Illustration">
+    </div>
+  </div>
+</section>
 {% endblock %}

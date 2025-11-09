@@ -1,9 +1,114 @@
 {% extends "base.html" %}
+{% block title %}About Us{% endblock %}
 
 {% block content %}
-<div class="hero-section">
-    <!-- TEMPORARY: This hero text is for testing only; change or remove before finalizing -->
-    <h1>TESTING (ABOUT) — Temporary Hero (change as needed)</h1>
-    <p>This hero section is temporary for testing. Feel free to change or remove before finalizing styles.</p>
-</div>
+<section class="about-section">
+  <div class="container">
+    <h1 class="about-title gradient-text">MEET THE TEAM</h1>
+
+    <!-- BACK END TEAM -->
+    <div class="team-section">
+      <h2 class="team-title">BACK END</h2>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/starwin.jpg') }}" alt="Starwin">
+          </div>
+          <h3 class="member-name">Starwin <span class="nickname">(“The Architect”)</span></h3>
+          <p class="member-role">CANOY</p>
+          <p class="member-desc">Loves building complex logic and structuring clean code behind the scenes.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/paularthur.jpg') }}" alt="Paul Arthur">
+          </div>
+          <h3 class="member-name">Paul Arthur <span class="nickname">(“Debugger Pro”)</span></h3>
+          <p class="member-role">MARAYAN</p>
+          <p class="member-desc">Finds bugs faster than anyone else and keeps everything running smoothly.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/kenneth.jpg') }}" alt="Kenneth">
+          </div>
+          <h3 class="member-name">Kenneth <span class="nickname">(“The Optimizer”)</span></h3>
+          <p class="member-role">SERANO</p>
+          <p class="member-desc">Makes sure every line of code performs efficiently and elegantly.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/raphael.jpg') }}" alt="Raphael">
+          </div>
+          <h3 class="member-name">Raphael <span class="nickname">(“Data Guy”)</span></h3>
+          <p class="member-role">INDUCIL</p>
+          <p class="member-desc">Handles data structures and storage with precision and logic.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/kent.jpg') }}" alt="Kent">
+          </div>
+          <h3 class="member-name">Kent <span class="nickname">(“API Wizard”)</span></h3>
+          <p class="member-role">RINS</p>
+          <p class="member-desc">Specializes in connecting the front-end with powerful, seamless back-end systems.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRONT END TEAM -->
+    <div class="team-section">
+      <h2 class="team-title">FRONT END</h2>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/aldrin.jpg') }}" alt="Aldrin">
+          </div>
+          <h3 class="member-name">Aldrin <span class="nickname">(“Pixel Perfectionist”)</span></h3>
+          <p class="member-role">REYES</p>
+          <p class="member-desc">Makes everything look beautiful and responsive down to the last pixel.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/jimuel.jpg') }}" alt="Jimuel">
+          </div>
+          <h3 class="member-name">Jimuel <span class="nickname">(“The Guy”)</span></h3>
+          <p class="member-role">ONG</p>
+          <p class="member-desc">Brings life to the interface with subtle animations and interactions.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/linden.jpg') }}" alt="Linden">
+          </div>
+          <h3 class="member-name">Linden <span class="nickname">(“Over Thinker”)</span></h3>
+          <p class="member-role">RIVERA</p>
+          <p class="member-desc">Di makatulog pag may na-miss na body sa css.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-frame">
+            <img src="{{ url_for('static', filename='image/vincent.jpg') }}" alt="Vincent">
+          </div>
+          <h3 class="member-name">Vincent <span class="nickname">(“The Doer”)</span></h3>
+          <p class="member-role">ALILING</p>
+          <p class="member-desc">Great at font and color analysis. </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ABOUT FRONT END & BACK END -->
+    <div class="roles-info">
+      <h2 class="gradient-text">What Do We Do?</h2>
+      <p><strong>Front-End Developers</strong> handle the look, feel, and interactivity of the website — they turn ideas into visual, clickable interfaces that users actually see.</p>
+      <p><strong>Back-End Developers</strong> manage the behind-the-scenes logic — databases, servers, and code that make everything function smoothly and securely.</p>
+    </div>
+
+  </div>
+</section>
 {% endblock %}

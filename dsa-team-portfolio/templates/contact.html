@@ -1,26 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="contact-list" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+<section class="contact-section">
+  <div class="contact-header">
+    <h1>Contact Our Team</h1>
+    <p>We’d love to connect with you — feel free to reach out!</p>
+  </div>
 
+  <div class="contact-list">
     {% for c in contacts %}
     <article class="contact-card">
-        <h2 style="font-size:1.8rem; margin-bottom:8px;">
-            <i class="fa-solid fa-hand-back-fist"></i> {{ c.name }}
+      <div class="contact-card-inner">
+        <h2 class="contact-name">
+          <i class="fa-solid fa-hand-back-fist"></i> {{ c.name }}
         </h2>
-        <div style="margin-top:12px; font-size:0.95rem; color:#334155;">
-            {% if c.github %}
-            <div><a href="{{ c.github }}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></div>
-            {% endif %}
-            {% if c.email %}
-            <div><a href="mailto:{{ c.email }}"><i class="fa-solid fa-envelope"></i> Email</a></div>
-            {% endif %}
-            {% if c.facebook %}
-            <div><a href="{{ c.facebook }}" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a></div>
-            {% endif %}
+        <div class="contact-links">
+          {% if c.github %}
+          <a href="{{ c.github }}" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          {% endif %}
+          {% if c.email %}
+          <a href="mailto:{{ c.email }}">
+            <i class="fa-solid fa-envelope"></i> Email
+          </a>
+          {% endif %}
+          {% if c.facebook %}
+          <a href="{{ c.facebook }}" target="_blank" rel="noopener">
+            <i class="fa-brands fa-facebook"></i> Facebook
+          </a>
+          {% endif %}
         </div>
+      </div>
     </article>
     {% endfor %}
-
+  </div>
 </section>
 {% endblock %}

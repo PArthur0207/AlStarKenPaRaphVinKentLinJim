@@ -1,28 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<section class="works-section">
   <div class="container">
-    <div class="work-card">
-      <h2 class="gradient-text">OUR PROGRAM/S</h2>
-      <p class="lead">--------------------------------------------------  made by us truly  --------------------------------------------------</p>
+    <header class="works-header">
+      <h2 class="gradient-text">OUR PROGRAMS</h2>
+      <p class="subtitle">made by us truly</p>
+    </header>
 
-      <div class="works">
-        {% if works %}
-          {% for p in works %}
-            <div class="work">
-              <h4 class= "gradient-text">{{ p.title }}</h4>
-              <h5>{{ p.description }}</h5>
-              {% if p.url %}
-                <div class="work-action">
-                  <a href="{{ p.url }}" class="try-button">Open</a>
-                </div>
-              {% endif %}
-            </div>
-          {% endfor %}
-        {% else %}
-          <p>No works found yet. Add entries to <code>data/projects.json</code>.</p>
-        {% endif %}
-      </div>
+    <div class="works-grid">
+      {% if works %}
+        {% for p in works %}
+          <div class="work-card">
+            <h3 class="work-title gradient-text">{{ p.title }}</h3>
+            <p class="work-desc">{{ p.description }}</p>
+            {% if p.url %}
+              <div class="work-action">
+                <a href="{{ p.url }}" class="try-button">Open</a>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="empty-text">No works found yet. Add entries to <code>data/projects.json</code>.</p>
+      {% endif %}
     </div>
   </div>
+</section>
 {% endblock %}
