@@ -237,7 +237,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 
 /*Works*/
 .container{
-    max-width:1100px;
+    max-width:1200px;
     margin:0 auto;
     padding:2rem
 }
@@ -254,8 +254,24 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     font-size: 500%;
 }
 
+.gradient-text {
+  background: linear-gradient(to right, #021569, #8abdff); 
+  -webkit-background-clip: text;   
+  -webkit-text-fill-color: transparent; 
+  font-size: 3rem;   
+  font-weight: bold;
+}
+
 .container .work-card h4 {
-    color: #9fa9d4;
+    color: #021569;
+    font-size: 200%;
+}
+
+.container .work-card h5 {
+    color: #8abdff;
+    font-size: 100%;
+    letter-spacing: 1px; 
+    word-spacing: 4px;
 }
 
 .container .work-card p {
@@ -263,11 +279,10 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     font-size: 100%;
 }
 
-
 .works{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1  rem;
+    gap: 1rem;
     margin-top: 2rem;
 }
 .work {
@@ -288,7 +303,7 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
 }
 
 .work h4 {
-    margin: 0 0 1rem;
+    margin: 1rem;
     color: #fff;
 }
 
@@ -306,6 +321,12 @@ html, body, input, textarea, select, button, h1, h2, h3, h4, h5, h6, code, pre {
     transition: all 0.2s;
     min-width: 160px;
     text-align: center;
+    margin-top: 3rem;
+}
+
+.try-button:hover {
+    background: #0341ca;
+    color: #fff;
 }
 
 .try-button {
