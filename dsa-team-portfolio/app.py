@@ -57,22 +57,38 @@ def tree_page():
     message = None
     root_exists = tree_manager.tree.root is not None
 
-    if request.method == "POST":
-        if not root_exists:
-            value = request.form.get("root_value", "").strip()
+    if request.method == "POST":    
+        # Determine which action
+        if "add_root" in request.form or "add_node" in request.form:
+            # Add root or child
+            value = request.form.get("root_value") or request.form.get("new_value")
+            value = value.strip()
             if not value:
-                message = "Please enter a valid root value."
-            else:
+                message = "Please enter a valid value."
+            elif not root_exists:
                 message = tree_manager.add_node(None, None, value)
                 root_exists = True
-        else:
-            parent = request.form.get("parent_value", "").strip()
-            side = request.form.get("side")
-            value = request.form.get("new_value", "").strip()
-            if not parent or not side or not value:
-                message = "Please provide parent, side, and new node value."
             else:
-                message = tree_manager.add_node(parent, side, value)
+                parent = request.form.get("parent_value").strip()
+                side = request.form.get("side")
+                if not parent or not side:
+                    message = "Please provide parent and side for the new node."
+                else:
+                    message = tree_manager.add_node(parent, side, value)
+
+        elif "delete_node" in request.form:
+            value = request.form.get("delete_value").strip()
+            if not value:
+                message = "Please enter a value to delete."
+            else:
+                message = tree_manager.delete_node_by_value(value)
+
+        elif "search_node" in request.form:
+            value = request.form.get("search_value").strip()
+            if not value:
+                message = "Please enter a value to search."
+            else:
+                message = tree_manager.search_node(value)
 
     return render_template(
         "tree.html",
@@ -80,6 +96,7 @@ def tree_page():
         message=message,
         root_exists=root_exists
     )
+
 
 
 if __name__ == '__main__':

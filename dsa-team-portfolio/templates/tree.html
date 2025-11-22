@@ -9,7 +9,7 @@
       <div class="tree-message">{{ message }}</div>
     {% endif %}
 
-    {% if tree == None %}
+    {% if tree is none %}
       <!-- Force user to add root node first -->
       <form method="POST" class="tree-form">
         <div class="form-group">
@@ -19,7 +19,7 @@
         <button type="submit" name="add_root" class="btn-primary">Add Root</button>
       </form>
     {% else %}
-      <!-- Add node after root exists -->
+      <!-- Add Node Form -->
       <form method="POST" class="tree-form">
         <div class="form-group">
           <label for="parent_value">Parent Node:</label>
@@ -38,20 +38,38 @@
         </div>
         <button type="submit" name="add_node" class="btn-primary">Add Node</button>
       </form>
+
+      <!-- Delete Node Form -->
+      <form method="POST" class="tree-form">
+        <div class="form-group">
+          <label for="delete_value">Delete Node:</label>
+          <input type="text" id="delete_value" name="delete_value" placeholder="Node value..." required>
+        </div>
+        <button type="submit" name="delete_node" class="btn-primary">Delete Node</button>
+      </form>
+
+      <!-- Search Node Form -->
+      <form method="POST" class="tree-form">
+        <div class="form-group">
+          <label for="search_value">Search Node:</label>
+          <input type="text" id="search_value" name="search_value" placeholder="Node value..." required>
+        </div>
+        <button type="submit" name="search_node" class="btn-primary">Search Node</button>
+      </form>
     {% endif %}
 
-    <!-- Render tree with indentation to show parent-child relationships -->
-    {% macro render_node(node, side_label="Root", depth=0) -%}
-      {% if node != None %}
+    <!-- Render tree with indentation -->
+    {% macro render_node(node, side_label="Root", depth=0) %}
+      {% if node %}
         <div style="padding-left: {{ depth * 20 }}px;">
           {{ node.value }} ({{ side_label }})
         </div>
         {{ render_node(node.left, "L", depth + 1) }}
         {{ render_node(node.right, "R", depth + 1) }}
       {% endif %}
-    {%- endmacro %}
+    {% endmacro %}
 
-    {% if tree != None %}
+    {% if tree %}
       <div class="tree-display">
         <h2>Current Tree:</h2>
         {{ render_node(tree) }}

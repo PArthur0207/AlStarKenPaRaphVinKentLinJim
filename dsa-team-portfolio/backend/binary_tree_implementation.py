@@ -9,10 +9,9 @@ class BinaryTreeManager:
     def add_node(self, parent_value, side, new_value):
         """Add a node to the tree."""
         if self.tree.root is None:
-            # If no root exists, new_value becomes root
             self.tree.root = Node(new_value)
             return f"Root node '{new_value}' added."
-        
+
         parent_node = self.find_node(parent_value)
         if not parent_node:
             return f"Parent node '{parent_value}' not found."
@@ -46,15 +45,16 @@ class BinaryTreeManager:
             return left_search
         return self._find_node_recursive(current.right, value)
 
-    def get_tree_dict(self):
-        """Return the tree as a nested dict for templates."""
-        return self._node_to_dict(self.tree.root)
+    def delete_node_by_value(self, value):
+        """Delete a node by value and return a message."""
+        if not self.tree.root:
+            return "Tree is empty."
+        msg = self.tree.delete_node(self.tree.root, value)
+        return msg
 
-    def _node_to_dict(self, node):
-        if node is None:
-            return None
-        return {
-            "value": node.value,
-            "left": self._node_to_dict(node.left),
-            "right": self._node_to_dict(node.right)
-        }
+    def search_node(self, value):
+        """Search for a node by value and return a message."""
+        if self.tree.search(self.tree.root, value):
+            return f"Node '{value}' found in the tree."
+        else:
+            return f"Node '{value}' not found in the tree."
