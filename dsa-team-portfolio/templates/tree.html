@@ -3,34 +3,60 @@
 {% block content %}
 <section class="tree-section">
   <div class="tree-box">
-    <h1 class="gradient-text">Binary Tree</h1>
+    <h1 class="gradient-text">Binary Tree Implementation</h1>
 
-    <!-- Display message -->
     {% if message %}
-      <div class="message-box">{{ message }}</div>
+      <div class="tree-message">{{ message }}</div>
     {% endif %}
 
-    <form method="POST">
-      <input type="text" name="value" placeholder="Enter node value" required>
+    {% if tree == None %}
+      <!-- Force user to add root node first -->
+      <form method="POST" class="tree-form">
+        <div class="form-group">
+          <label for="root_value">Enter Root Node:</label>
+          <input type="text" id="root_value" name="root_value" placeholder="Root value..." required>
+        </div>
+        <button type="submit" name="add_root" class="btn-primary">Add Root</button>
+      </form>
+    {% else %}
+      <!-- Add node after root exists -->
+      <form method="POST" class="tree-form">
+        <div class="form-group">
+          <label for="parent_value">Parent Node:</label>
+          <input type="text" id="parent_value" name="parent_value" placeholder="Parent node..." required>
+        </div>
+        <div class="form-group">
+          <label for="side">Side:</label>
+          <select id="side" name="side" required>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="new_value">New Node Value:</label>
+          <input type="text" id="new_value" name="new_value" placeholder="New node value..." required>
+        </div>
+        <button type="submit" name="add_node" class="btn-primary">Add Node</button>
+      </form>
+    {% endif %}
 
-      {% if root_exists %}
-        <input type="text" name="parent" placeholder="Parent node value" required>
-        <select name="side" required>
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-        </select>
-      {% else %}
-        <p>Please enter the <strong>root node</strong> first.</p>
+    <!-- Render tree with indentation to show parent-child relationships -->
+    {% macro render_node(node, side_label="Root", depth=0) -%}
+      {% if node != None %}
+        <div style="padding-left: {{ depth * 20 }}px;">
+          {{ node.value }} ({{ side_label }})
+        </div>
+        {{ render_node(node.left, "L", depth + 1) }}
+        {{ render_node(node.right, "R", depth + 1) }}
       {% endif %}
+    {%- endmacro %}
 
-      <button type="submit">Add Node</button>
-    </form>
-
-    <!-- Optional: show tree structure as JSON for now -->
-    <div class="tree-display">
-      <h2>Current Tree:</h2>
-      <pre>{{ tree | tojson(indent=2) }}</pre>
-    </div>
+    {% if tree != None %}
+      <div class="tree-display">
+        <h2>Current Tree:</h2>
+        {{ render_node(tree) }}
+      </div>
+    {% endif %}
   </div>
 </section>
 {% endblock %}

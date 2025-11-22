@@ -55,24 +55,32 @@ def contacts_page():
 @app.route('/tree', methods=["GET", "POST"])
 def tree_page():
     message = None
-
-    # Check if root exists
     root_exists = tree_manager.tree.root is not None
 
     if request.method == "POST":
-        value = request.form.get("value")
         if not root_exists:
-            # Force root node first
-            message = tree_manager.add_node(None, None, value)
+            value = request.form.get("root_value", "").strip()
+            if not value:
+                message = "Please enter a valid root value."
+            else:
+                message = tree_manager.add_node(None, None, value)
+                root_exists = True
         else:
-            parent = request.form.get("parent")
+            parent = request.form.get("parent_value", "").strip()
             side = request.form.get("side")
-            message = tree_manager.add_node(parent, side, value)
-        return render_template("tree.html", tree=tree_manager.get_tree_dict(),
-                               message=message, root_exists=True)
+            value = request.form.get("new_value", "").strip()
+            if not parent or not side or not value:
+                message = "Please provide parent, side, and new node value."
+            else:
+                message = tree_manager.add_node(parent, side, value)
 
-    return render_template("tree.html", tree=tree_manager.get_tree_dict(),
-                           message=message, root_exists=root_exists)
+    return render_template(
+        "tree.html",
+        tree=tree_manager.tree.root,
+        message=message,
+        root_exists=root_exists
+    )
+
 
 if __name__ == '__main__':
     app.run(debug=True)
