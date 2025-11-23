@@ -790,8 +790,8 @@ body {
   text-align: left;
 }
 
-.tree-box input,
-.tree-box select {
+.form-group input,
+.form-group select {
     background: rgba(255, 255, 255, 0.08);
     color: #d0d8e8;
     line-height: 1;  
@@ -807,12 +807,12 @@ body {
 
 }
 
-.tree-box input::placeholder {
+.form-group input::placeholder {
     color: #a4afc3;
 }
 
-.tree-box input:focus,
-.tree-box select:focus {
+.form-group input:focus,
+.form-group select:focus {
     border: 1px solid #6ecbff;
     box-shadow: 0 0 10px rgba(110, 203, 255, 0.5);
 }
