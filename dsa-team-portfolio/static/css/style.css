@@ -790,6 +790,29 @@ body {
   text-align: left;
 }
 
+.tree-box input,
+.tree-box select {
+    background: rgba(255, 255, 255, 0.08);
+    color: #d0d8e8;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 12px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+
+
+}
+
+.tree-box input::placeholder {
+    color: #a4afc3;
+}
+
+.tree-box input:focus,
+.tree-box select:focus {
+    border: 1px solid #6ecbff;
+    box-shadow: 0 0 10px rgba(110, 203, 255, 0.5);
+}
 
 .btn-primary-tree,
 .btn-serve-tree {
