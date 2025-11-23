@@ -3,5 +3,10 @@
     "title": "Customer Queue Management System",
     "description": "A queue system that prioritizes customers based on their state (e.g., Regular or Priority). It manages customer order, serving, and insertion using a custom doubly-ended queue structure.",
     "url": "/queue"
+  },
+  {
+    "title": "Binary Search Tree Implementation",
+    "description": "An implementation of a binary search tree (BST) that supports insertion, deletion, search and replace operations. The BST interface lets you add nodes, delete nodes, search values, and run traversals.",
+    "url": "/tree"
   }
 ]

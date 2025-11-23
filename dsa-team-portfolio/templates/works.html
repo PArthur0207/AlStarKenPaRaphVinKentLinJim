@@ -27,43 +27,4 @@
     </div>
   </div>
 </section>
-<!-- Binary Tree Operations Section (anchored minimally under works display) -->
-<hr>
-<section class="binary-tree-section">
-  <h2>Binary Tree Operations</h2>
-
-  <!-- Search Node Form -->
-  <form action="{{ url_for('tree_page') }}" method="POST">
-    <div>
-      <label for="search_value">Search Node:</label>
-      <input type="text" id="search_value" name="search_value" placeholder="Enter value to search" required>
-      <button type="submit" name="search_node">Search</button>
-    </div>
-  </form>
-
-  <!-- Post-Order Traversal Form -->
-  <form action="{{ url_for('tree_page') }}" method="POST">
-    <div>
-      <button type="submit" name="post_traversal">Run Post-Order Traversal</button>
-    </div>
-  </form>
-  {% if traversal %}
-    <div>
-      <p>Post-Order Traversal Result: {{ traversal }}</p>
-    </div>
-  {% endif %}
-
-  <!-- Delete Node Form -->
-  <form action="{{ url_for('tree_page') }}" method="POST">
-    <div>
-      <label for="delete_value">Delete Node:</label>
-      <input type="text" id="delete_value" name="delete_value" placeholder="Enter value to delete" required>
-      <button type="submit" name="delete_node">Delete</button>
-    </div>
-  </form>
-
-  {% if message %}
-    <p>{{ message }}</p>
-  {% endif %}
-</section>
 {% endblock %}
