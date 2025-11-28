@@ -33,17 +33,13 @@ class BinaryTreeManager:
 
     def find_node(self, value):
         """Return node object with the given value."""
-        return self._find_node_recursive(self.tree.root, value)
-
-    def _find_node_recursive(self, current, value):
-        if current is None:
+        items = self.tree.inorder_traversal(self.tree.root, "")
+        if items:
+            for item in items:
+                if item == value:
+                    return item
             return None
-        if current.value == value:
-            return current
-        left_search = self._find_node_recursive(current.left, value)
-        if left_search:
-            return left_search
-        return self._find_node_recursive(current.right, value)
+        return None
 
     def delete_node_by_value(self, value):
         """Delete a node by value and return a message."""
