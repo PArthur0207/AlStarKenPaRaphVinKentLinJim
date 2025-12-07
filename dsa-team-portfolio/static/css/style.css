@@ -844,20 +844,12 @@ body {
 
 .tree-diagram {
   text-align: center;
-  padding-top: 20px;
-  position: relative;
+  display:flex;
+  margin-top: 20px;
 
 }
 
-.tree-diagram ul {
-  padding-top:20px 5px 0 5px;
-  position: relative;
-  display:inline-block;
-  justify-content:center;
-  vertical-align:top;
-  text-align: center;
-  
-}
+
 
 .tree-diagram li {
   list-style: none;
@@ -871,37 +863,15 @@ body {
 
 }
 
-.tree-diagram li::before,
-.tree-diagram li::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 20px;
-    border-top: 2px solid #ccc;
-}
-
-.tree-diagram li::before {
-    left: -50%;
-    border-right: 2px solid #ccc;
-}
-
-.tree-diagram li::after {
-    right: -50%;
-    border-left: 2px solid #ccc;
-}
-
-
-.tree-diagram li:only-child::before,
-.tree-diagram li:only-child::after {
-    display: none;
-}
 
 .empty {
-    display: inline-block;
-    width: 50px; 
     visibility: hidden;
 
+}
+
+.empty::before,
+.empty::after {
+    display: none;
 }
 
 .tree-node {
