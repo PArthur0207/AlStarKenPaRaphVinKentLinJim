@@ -865,39 +865,6 @@ body {
 }
 
 
-.tree-diagram li::before,
-.tree-diagram li::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 20px;
-    border-top: 2px solid #7fb5ff;
-}
-
-.tree-diagram li::before {
-    left: -50%;
-    border-right: 2px solid #7fb5ff;
-}
-
-.tree-diagram li::after {
-    right: -50%;
-    border-left: 2px solid #7fb5ff;
-}
-
-
-.tree-diagram > ul > li::before,
-.tree-diagram > ul > li::after {
-    border: none;
-}
-
-
-.tree-diagram ul ul li:first-child::before {
-    border: none; 
-}
-.tree-diagram ul ul li:last-child::after {
-    border: none; 
-}
 
 
 .tree-diagram .empty {
