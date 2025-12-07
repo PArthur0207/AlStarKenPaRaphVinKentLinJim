@@ -844,20 +844,12 @@ body {
 
 .tree-diagram {
   text-align: center;
-  padding-top: 20px;
-  position: relative;
+  display:flex;
+  margin-top: 20px;
 
 }
 
-.tree-diagram ul {
-  padding-top:20px 5px 0 5px;
-  position: relative;
-  display:inline-block;
-  justify-content:center;
-  vertical-align:top;
-  text-align: center;
-  
-}
+
 
 .tree-diagram li {
   list-style: none;
@@ -871,18 +863,15 @@ body {
 
 }
 
-.tree-diagram li::before,
-.tree-diagram li::after {
-  /* connector lines removed; keep pseudo-elements disabled to preserve layout alignment */
-  display: none;
-  content: '';
-}
 
 .empty {
-    display: inline-block;
-    width: 50px; 
     visibility: hidden;
 
+}
+
+.empty::before,
+.empty::after {
+    display: none;
 }
 
 .tree-node {
@@ -935,7 +924,6 @@ body {
 
 .tree-display li::before,
 .tree-display li::after {
-  /* connector lines removed; keep pseudo-elements disabled to preserve layout alignment */
   display: none;
   content: '';
 }

@@ -99,6 +99,11 @@ def tree_page():
             else:
                     message = tree_manager.replace_node(old_value, new_value)
 
+        elif "delete_all" in request.form:
+            message = tree_manager.delete_all_nodes()
+            root_exists = False
+
+
     return render_template(
         "tree.html",
         tree=tree_manager.tree.root,

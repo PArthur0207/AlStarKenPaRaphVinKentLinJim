@@ -67,3 +67,9 @@ class BinaryTreeManager:
 
         node.value = new_value
         return f"Node '{old_value}' replaced with '{new_value}'."
+    
+    def delete_all_nodes(self):
+        """Delete the entire tree."""
+        self.tree.root = None
+        return "All nodes have been deleted. The tree is now empty."
+
