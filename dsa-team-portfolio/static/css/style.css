@@ -857,10 +857,9 @@ body {
 }
 
 .tree-diagram li {
-  list-style:none;
-  text-align:center;
   position:relative;
-  padding: 20px 10px 0 10px;
+  padding-top: 20px;
+  display: inline-block;
 
 }
 
