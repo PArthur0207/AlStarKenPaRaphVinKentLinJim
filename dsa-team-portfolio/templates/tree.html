@@ -76,22 +76,36 @@
     {% endif %}
 
     <!-- Render tree with indentation -->
-    {% macro render_node(node, side_label="Root", depth=0) %}
-      {% if node %}
-        <div style="padding-left: {{ depth * 20 }}px;">
-          {{ node.value }} ({{ side_label }})
-        </div>
-        {{ render_node(node.left, "L", depth + 1) }}
-        {{ render_node(node.right, "R", depth + 1) }}
-      {% endif %}
-    {% endmacro %}
+   {% macro render_node(node) %}
+<ul>
+    <li>
+        <div class="tree-node">{{ node.value }}</div>
 
-    {% if tree %}
-      <div class="tree-display">
-        <h2>Current Tree:</h2>
-        {{ render_node(tree) }}
-      </div>
-    {% endif %}
+        {% if node.left or node.right %}
+        <ul>
+            {% if node.left %}
+                {{ render_node(node.left) }}
+            {% else %}
+                <li class="empty"></li>
+            {% endif %}
+
+            {% if node.right %}
+                {{ render_node(node.right) }}
+            {% else %}
+                <li class="empty"></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </li>
+</ul>
+{% endmacro %}
+
+<!--Visual Tree-->
+{% if tree %}
+  <div class="tree-display">
+    <h2>Current Tree:</h2>
+    <div class="tree-diagram">
+      {{ render_node(tree) }}
+    </div>
   </div>
-</section>
-{% endblock %}
+{% endif %}
