@@ -849,8 +849,6 @@ body {
 
 }
 
-
-
 .tree-diagram li {
   list-style: none;
   position:relative;
@@ -863,42 +861,7 @@ body {
 
 }
 
-.tree-diagram li::before,
-.tree-diagram li::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 20px;
-    border-top: 2px solid #7fb5ff;
-}
-
-.tree-diagram li::before {
-    left: 0;
-    border-left: none;
-}
-
-.tree-diagram li::after {
-    right: 0;
-    border-right: none;
-}
-
-.tree-diagram > ul > li::before,
-.tree-diagram > ul > li::after {
-    border: none;
-}
-
-.tree-diagram ul ul::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateY(-50%);
-    height: 20px;
-    border-left: 2px solid #7fb5ff;
-}
-
-
+.
 .empty {
     visibility: hidden;
 
