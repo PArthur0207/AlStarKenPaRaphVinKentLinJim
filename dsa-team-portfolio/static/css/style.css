@@ -873,28 +873,9 @@ body {
 
 .tree-diagram li::before,
 .tree-diagram li::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 20px;
-    border-top: 2px solid #ccc;
-}
-
-.tree-diagram li::before {
-    left: -50%;
-    border-right: 2px solid #ccc;
-}
-
-.tree-diagram li::after {
-    right: -50%;
-    border-left: 2px solid #ccc;
-}
-
-
-.tree-diagram li:only-child::before,
-.tree-diagram li:only-child::after {
-    display: none;
+  /* connector lines removed; keep pseudo-elements disabled to preserve layout alignment */
+  display: none;
+  content: '';
 }
 
 .empty {
@@ -915,3 +896,66 @@ body {
     display: inline-block;
     text-align: center;
 }
+
+/* BST Styles */
+.node-circle {
+  fill: #4f9dff;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.tree-display {
+  text-align: center;
+  padding-top: 20px;
+  position: relative;
+
+}
+
+.tree-display ul {
+  padding-top:20px 5px 0 5px;
+  position: relative;
+  display:inline-block;
+  justify-content:center;
+  vertical-align:top;
+  text-align: center;
+  
+}
+
+.tree-display li {
+  list-style: none;
+  position:relative;
+  padding-top: 40px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  margin: 0 20px;
+
+
+}
+
+.tree-display li::before,
+.tree-display li::after {
+  /* connector lines removed; keep pseudo-elements disabled to preserve layout alignment */
+  display: none;
+  content: '';
+}
+
+.empty {
+    display: inline-block;
+    width: 50px; 
+    visibility: hidden;
+
+}
+
+.tree-node {
+    padding: 10px 16px;
+    background: #4f9dff;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(79, 157, 255, 0.5);
+    min-width: 50px;
+    display: inline-block;
+    text-align: center;
+}
+
