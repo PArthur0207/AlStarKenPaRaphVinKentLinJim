@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory, request, redirect, url_for
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for, jsonify
 from backend import *
 import json
 import os
@@ -6,6 +6,7 @@ import os
 app = Flask(__name__)
 customer_queue = CustomerQueue()
 tree_manager = BinaryTreeManager()
+dict_search = DictionarySearch()
 
 @app.route('/')
 def index():
@@ -96,13 +97,55 @@ def tree_page():
             if not old_value or not new_value:
                 message = "Please provide both old and new values."
             else:
-                message = tree_manager.replace_node(old_value, new_value)
+                    message = tree_manager.replace_node(old_value, new_value)
 
     return render_template(
         "tree.html",
         tree=tree_manager.tree.root,
         message=message,
         root_exists=root_exists
+    )
+
+@app.route("/dict_search", methods=["GET", "POST"])
+def dictionary_page():
+    result = None
+    message = None
+    words = None
+
+    if request.method == "POST":
+        action = request.form.get("action")
+        word = request.form.get("word", "").strip()
+
+        # Add word
+        if action == "add":
+            if word:
+                message = dict_search.add_word(word)
+            else:
+                message = "Please enter a word to add."
+
+        # Search word
+        elif action == "search":
+            if word:
+                result = dict_search.search_word(word)
+            else:
+                result = {"found": False, "path": [], "error": "Please enter a word to search."}
+
+        # Delete word
+        elif action == "delete":
+            if word:
+                message = dict_search.delete_word(word)
+            else:
+                message = "Please enter a word to delete."
+
+        # Show all words
+        elif action == "all":
+            words = dict_search.get_all_words()
+
+    return render_template(
+        "dict_search.html",
+        result=result,
+        message=message,
+        words=words
     )
 
 if __name__ == "__main__":

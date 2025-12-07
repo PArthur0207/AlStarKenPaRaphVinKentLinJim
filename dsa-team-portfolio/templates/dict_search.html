@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="tree-section">
+  <div class="tree-box">
+
+    <h1 class="gradient-text"><i class="fa-solid fa-book"></i> Dictionary BST</h1>
+
+    {% if message %}
+      <div class="tree-message">{{ message }}</div>
+    {% endif %}
+
+    <!-- Add Word -->
+    <form method="POST" action="/dict_search" class="tree-form">
+      <h3>Add Word</h3>
+      <div class="form-group">
+        <label for="word_add">Word:</label>
+        <input type="text" name="word" id="word_add" placeholder="Enter word..." required>
+        <input type="hidden" name="action" value="add">
+      </div>
+      <button type="submit" class="btn-primary">Add</button>
+    </form>
+
+    <!-- Search Word -->
+    <form method="POST" action="/dict_search" class="tree-form">
+      <h3>Search Word</h3>
+      <div class="form-group">
+        <label for="word_search">Word:</label>
+        <input type="text" name="word" id="word_search" placeholder="Word to search..." required>
+        <input type="hidden" name="action" value="search">
+      </div>
+      <button type="submit" class="btn-primary-tree">Search</button>
+    </form>
+
+    <!-- Delete Word -->
+    <form method="POST" action="/dict_search" class="tree-form">
+      <h3>Delete Word</h3>
+      <div class="form-group">
+        <label for="word_delete">Word:</label>
+        <input type="text" name="word" id="word_delete" placeholder="Word to delete..." required>
+        <input type="hidden" name="action" value="delete">
+      </div>
+      <button type="submit" class="btn-primary-tree">Delete</button>
+    </form>
+
+    <!-- Show All Words -->
+    <form method="POST" action="/dict_search" class="tree-form">
+      <h3>Show All Words</h3>
+      <input type="hidden" name="action" value="all">
+      <button type="submit" class="btn-primary-tree">View Words</button>
+    </form>
+
+    <!-- Display Results -->
+    {% if result %}
+      <div class="tree-display">
+        <h2>Result</h2>
+
+        {% if result.found is defined %}
+          <p><strong>Found:</strong> {{ result.found }}</p>
+        {% endif %}
+
+        {% if result.path %}
+          <p><strong>Search Path:</strong> {{ result.path | join(' → ') }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if words %}
+      <div class="tree-display">
+        <h2>All Words (In-Order)</h2>
+        <ul>
+          {% for w in words %}
+            <li>{{ w }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if message %}
+      <div class="tree-display">
+        <p>{{ message }}</p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}

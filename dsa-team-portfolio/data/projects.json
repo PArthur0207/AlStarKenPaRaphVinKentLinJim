@@ -8,5 +8,10 @@
     "title": "Binary Tree Implementation",
     "description": "This project is a simple web-based application that allows users to create, edit, search, and visualize a Binary Tree interactively.",
     "url": "/tree"
+  },
+  {
+    "title": "Dictionary BST",
+    "description": "A binary search tree implementation for dictionary words. Users can add, search, delete, and view all words in the tree.",
+    "url": "/dict_search"
   }
 ]
