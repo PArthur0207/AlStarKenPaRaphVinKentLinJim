@@ -849,28 +849,23 @@ body {
 }
 
 .tree-diagram ul {
-    padding-top: 20px;
-    position: relative;
-    text-align: center;
+    padding: 0;
+    margin: 0;
     padding-left: 0;
-    
+    display:flex;
+    justify-content: center;
+    list-style:none;
 }
 
 .tree-diagram li {
-    list-style-type: none;
-    text-align: center;
+    list-style: none;
     position: relative;
+    text-align: center;
     padding: 20px 5px 0 5px;
-    display:inline-block;
-    vertical-align:top;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
-}
-
-.tree-diagram li ul {
-  display:flex;
-  justify-content:center;
-  margin-top:20px;
-  padding-left:0;
 }
 
 
@@ -880,10 +875,6 @@ body {
     height: 20px;
 }
 
-.tree-diagram .empty::before,
-.tree-diagram .empty::after {
-    display: none;
-}
 
 
 .tree-node {
