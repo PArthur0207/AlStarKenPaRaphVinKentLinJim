@@ -52,6 +52,41 @@
     </form>
 
     <!-- Display Results -->
+    {% macro render_node(node) %}
+    <ul>
+        <li>
+            <div class="tree-node">{{ node.value }}</div>
+
+            {% if node.left or node.right %}
+            <ul>
+                {% if node.left %}
+                    {{ render_node(node.left) }}
+                {% else %}
+                    <li class="empty"></li>
+                {% endif %}
+
+                {% if node.right %}
+                    {{ render_node(node.right) }}
+                {% else %}
+                    <li class="empty"></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </li>
+    {% endmacro %}
+
+    <!-- Visual Tree (BST) -->
+    {% if tree %}
+      <div class="tree-display">
+        <h2>Binary Search Tree:</h2>
+        <div class="tree-diagram">
+          <ul>
+            {{ render_node(tree) }}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+
     {% if result %}
       <div class="tree-display">
         <h2>Result</h2>
@@ -68,7 +103,7 @@
 
     {% if words %}
       <div class="tree-display">
-        <h2>All Words (In-Order)</h2>
+        <h2>DICTIONARY:</h2>
         <ul>
           {% for w in words %}
             <li>{{ w }}</li>

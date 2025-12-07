@@ -150,7 +150,8 @@ def dictionary_page():
         "dict_search.html",
         result=result,
         message=message,
-        words=words
+        words=words,
+        tree=dict_search.bst.root
     )
 
 if __name__ == "__main__":
