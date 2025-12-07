@@ -843,32 +843,40 @@ body {
 }
 
 .tree-diagram ul {
-  padding: 20px 5px 0 5px;
+  padding: 0;
+  margin: 0;
   position: relative;
-  display: inline-block;
+  display: flex;
+  gap: 40px;
   justify-content: center;
-  vertical-align: top;
-  text-align: center;
+  align-items: flex-start;
+  list-style: none;
+}
+.tree-diagram ul ul {
+  margin-top: 20px;
+  padding: 0;
 }
 .tree-diagram li {
   list-style: none;
   position: relative;
-  padding-top: 10px;
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
-  margin: 0 20px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  min-width: 80px;
 }
 
-
 .empty {
-    visibility: hidden;
-
+  display: inline-block;
+  min-width: 80px;
+  height: 0;
+  visibility: hidden;
 }
 
 .empty::before,
 .empty::after {
-    display: none;
+  display: none;
 }
 
 .tree-node {
@@ -898,22 +906,28 @@ body {
 }
 
 .tree-display ul {
-  padding: 20px 5px 0 5px;
+  padding: 0;
+  margin: 0;
   position: relative;
-  display: inline-block;
+  display: flex;
+  gap: 40px;
   justify-content: center;
-  vertical-align: top;
-  text-align: center;
+  align-items: flex-start;
+  list-style: none;
 }
-
+.tree-display ul ul {
+  margin-top: 20px;
+  padding: 0;
+}
 .tree-display li {
   list-style: none;
   position: relative;
-  padding-top: 10px;
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
-  margin: 0 20px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  min-width: 80px;
 }
 
 .tree-display li::before,
@@ -923,10 +937,10 @@ body {
 }
 
 .empty {
-    display: inline-block;
-    width: 50px; 
-    visibility: hidden;
-
+  display: inline-block;
+  min-width: 80px;
+  height: 0;
+  visibility: hidden;
 }
 
 .tree-node {
