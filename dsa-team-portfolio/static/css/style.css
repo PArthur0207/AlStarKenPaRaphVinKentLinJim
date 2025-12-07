@@ -844,6 +844,8 @@ body {
 
 .tree-diagram {
   text-align: center;
+  display: block;
+  margin-top: 20px;
 
 }
 
@@ -851,13 +853,19 @@ body {
   padding-top:20px;
   position: relative;
   display:flex;
+  justify-content:center;
   
 }
 
 .tree-diagram li {
+  list-style: none;
   position:relative;
-  padding-top: 20px;
+  padding-top: 40px;
   display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  margin: 0 20px;
+
 
 }
 
