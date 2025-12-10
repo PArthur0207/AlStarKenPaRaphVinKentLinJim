@@ -811,13 +811,7 @@ body {
     outline: none;
     font-size: 1rem;
     transition: box-shadow 0.3s ease, border 0.3s ease;
-   
-
-
-
-
 }
-
 
 .form-group input::placeholder {
     color: #a4afc3;
@@ -933,7 +927,6 @@ body {
 
 
 }
-
 
 .tree-display ul {
   padding: 0;
