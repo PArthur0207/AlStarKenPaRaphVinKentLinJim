@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block content %}
@@ -9,114 +10,109 @@
       <div class="tree-message">{{ message }}</div>
     {% endif %}
 
-    {% if tree is none %}
-      <!-- Force user to add root node first -->
-      <form method="POST" class="tree-form">
-        <div class="form-group">
-          <label for="root_value">Enter Root Node:</label>
-          <input type="text" id="root_value" name="root_value" placeholder="Root value..." required>
-        </div>
-        <button type="submit" name="add_root" class="btn-primary">Add Root</button>
-      </form>
-    {% else %}
-      <!-- Add node after root exists -->
-      <form method="POST" class="tree-form">
-        <h3>Add Node</h3>
-        <div class="form-group">
-          <label for="parent_value">Parent Node:</label>
-          <input type="text" id="parent_value" name="parent_value" placeholder="Parent node..." required>
-        </div>
-        <div class="form-group">
-          <label for="side">Side:</label>
-          <select id="side" name="side" required>
-            <option value="left">Left</option>
-            <option value="right">Right</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="new_value">New Node Value:</label>
-          <input type="text" id="new_value" name="new_value" placeholder="New node value..." required>
-        </div>
-        <button type="submit" name="add_node" class="btn-primary-tree">Add Node</button>
-      </form>
-
-      <!-- Delete Node -->
-      <form method="POST" class="tree-form">
-        <h3>Delete Node</h3>
-        <div class="form-group">
-          <label for="delete_value">Node Value to Delete:</label>
-          <input type="text" id="delete_value" name="delete_value" placeholder="Value to delete..." required>
-        </div>
-        <button type="submit" name="delete_node" class="btn-primary-tree">Delete Node</button>
-      </form>
-
-      <!-- Search Node -->
-      <form method="POST" class="tree-form">
-        <h3>Search Node</h3>
-        <div class="form-group">
-          <label for="search_value">Node Value to Search:</label>
-          <input type="text" id="search_value" name="search_value" placeholder="Value to search..." required>
-        </div>
-        <button type="submit" name="search_node" class="btn-primary-tree">Search Node</button>
-      </form>
-
-      <!-- Replace Node -->
-      <form method="POST" class="tree-form">
-        <h3>Replace Node</h3>
-        <div class="form-group">
-          <label for="old_value">Current Node Value:</label>
-          <input type="text" id="old_value" name="old_value" placeholder="Old value..." required>
-        </div>
-        <div class="form-group">
-          <label for="new_value_replace">New Node Value:</label>
-          <input type="text" id="new_value_replace" name="new_value_replace" placeholder="New value..." required>
-        </div>
-        <button type="submit" name="replace_node" class="btn-primary-tree">Replace Node</button>
-      </form>
-
-      <!-- Delete all -->
-      <form method="POST" class="tree-form">
-        <h3>Delete All Nodes</h3>
-        <button type="submit" name="delete_all" class="btn-primary-tree">Delete Nodes</button>
-      </form>
-
-    {% endif %}
-
-    <!-- Render tree with indentation -->
-{% macro render_node(node) %}
-<li>
-    <div class="tree-node">{{ node.value }}</div>
-
-    {% if node.left or node.right %}
-    <ul>
-        {% if node.left %}
-            {{ render_node(node.left) }}
+    <div class="tree-content">
+      <div class="tree-controls">
+        {% if tree is none %}
+          <!-- Force user to add root node first -->
+          <form method="POST" class="tree-form">
+            <div class="form-group">
+              <label for="root_value">Enter Root Node:</label>
+              <input type="text" id="root_value" name="root_value" placeholder="Root value..." required>
+            </div>
+            <button type="submit" name="add_root" class="btn-primary">Add Root</button>
+          </form>
         {% else %}
-            <li class="empty"></li>
+          <!-- Add node after root exists -->
+          <form method="POST" class="tree-form">
+            <h3>Add Node</h3>
+            <div class="form-group">
+              <label for="parent_value">Parent Node:</label>
+              <input type="text" id="parent_value" name="parent_value" placeholder="Parent node..." required>
+            </div>
+            <div class="form-group">
+              <label for="side">Side:</label>
+              <select id="side" name="side" required>
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="new_value">New Node Value:</label>
+              <input type="text" id="new_value" name="new_value" placeholder="New node value..." required>
+            </div>
+            <button type="submit" name="add_node" class="btn-primary-tree">Add Node</button>
+          </form>
+
+          <!-- Delete Node -->
+          <form method="POST" class="tree-form">
+            <h3>Delete Node</h3>
+            <div class="form-group">
+              <label for="delete_value">Node Value to Delete:</label>
+              <input type="text" id="delete_value" name="delete_value" placeholder="Value to delete..." required>
+            </div>
+            <button type="submit" name="delete_node" class="btn-primary-tree">Delete Node</button>
+          </form>
+
+          <!-- Search Node -->
+          <form method="POST" class="tree-form">
+            <h3>Search Node</h3>
+            <div class="form-group">
+              <label for="search_value">Node Value to Search:</label>
+              <input type="text" id="search_value" name="search_value" placeholder="Value to search..." required>
+            </div>
+            <button type="submit" name="search_node" class="btn-primary-tree">Search Node</button>
+          </form>
+
+          <!-- Replace Node -->
+          <form method="POST" class="tree-form">
+            <h3>Replace Node</h3>
+            <div class="form-group">
+              <label for="old_value">Current Node Value:</label>
+              <input type="text" id="old_value" name="old_value" placeholder="Old value..." required>
+            </div>
+            <div class="form-group">
+              <label for="new_value_replace">New Node Value:</label>
+              <input type="text" id="new_value_replace" name="new_value_replace" placeholder="New value..." required>
+            </div>
+            <button type="submit" name="replace_node" class="btn-primary-tree">Replace Node</button>
+          </form>
+
+          <!-- Delete all -->
+          <form method="POST" class="tree-form">
+            <h3>Delete All Nodes</h3>
+            <button type="submit" name="delete_all" class="btn-primary-tree">Delete Nodes</button>
+          </form>
+
         {% endif %}
+      </div>
 
-        {% if node.right %}
-            {{ render_node(node.right) }}
-        {% else %}
-            <li class="empty"></li>
-        {% endif %}
-    </ul>
-    {% endif %}
-</li>
-{% endmacro %}
+      <div class="tree-preview">
+        {% macro serialize(node) -%}
+        {%- if node -%}
+        {"value": {{ node.value|tojson }}, "left": {{ serialize(node.left) }}, "right": {{ serialize(node.right) }}}
+        {%- else -%}
+        null
+        {%- endif -%}
+        {%- endmacro %}
 
-
-
-<!--Visual Tree-->
-{% if tree %}
-  <div class="tree-display">
-    <h2>Current Tree:</h2>
-    <div class="tree-diagram">
-     <ul>
-      {{ render_node(tree) }}
-     </ul>
+        <!-- Visual Tree Display (always present; shows empty state when tree is null) -->
+        <div class="tree-display">
+          <h2>Binary Tree Visualization:</h2>
+          <div id="tree-visualizer" class="tree-visualizer-container"></div>
+        </div>
+      </div>
     </div>
-  </div>
-{% endif %}
+
+    
 </section>
+
+<script src="{{ url_for('static', filename='js/tree-visualizer.js') }}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var treeData = {{ serialize(tree)|safe }};
+    var searchPath = {{ (path|tojson) if path is defined else 'null' }};
+    initTreeVisualizer('tree-visualizer', treeData, searchPath);
+  });
+</script>
+
 {% endblock %}
