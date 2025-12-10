@@ -760,7 +760,7 @@ body {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   padding: 40px;
-  max-width: 600px;
+  max-width: 6000px;
   width: 100%;
   text-align: left;
   box-shadow: 0 0 40px rgba(102, 163, 255, 0.3);
@@ -911,6 +911,12 @@ body {
     text-align: center;
 }
 
+.tree-display h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #a9dfff;
+}
 
 /* BST Styles */
 .node-circle {
