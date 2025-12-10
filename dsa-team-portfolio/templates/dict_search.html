@@ -60,27 +60,27 @@
 
     <!-- Display Results -->
     {% macro render_node(node) %}
-    <ul>
-        <li>
-            <div class="tree-node">{{ node.value }}</div>
+      <li>
+        <div class="tree-node">{{ node.value }}</div>
 
-            {% if node.left or node.right %}
-            <ul>
-                {% if node.left %}
-                    {{ render_node(node.left) }}
-                {% else %}
-                    <li class="empty"></li>
-                {% endif %}
-
-                {% if node.right %}
-                    {{ render_node(node.right) }}
-                {% else %}
-                    <li class="empty"></li>
-                {% endif %}
-            </ul>
+        {% if node.left or node.right %}
+          <ul>
+            {% if node.left %}
+              {{ render_node(node.left) }}
+            {% else %}
+              <li class="empty"></li>
             {% endif %}
-        </li>
+
+            {% if node.right %}
+              {{ render_node(node.right) }}
+            {% else %}
+              <li class="empty"></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+      </li>
     {% endmacro %}
+
 
     <!-- Visual Tree (BST) -->
     {% if tree %}
@@ -94,6 +94,7 @@
       </div>
     {% endif %}
 
+    <!-- Search Result -->
     {% if result %}
       <div class="tree-display">
         <h2>Result</h2>
@@ -119,11 +120,7 @@
     </div>
     {% endif %}
 
-    {% if message %}
-      <div class="tree-display">
-        <p>{{ message }}</p>
-      </div>
-    {% endif %}
+    {# message already shown near the top; no duplicate display here #}
 
   </div>
 </section>
