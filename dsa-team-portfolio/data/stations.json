@@ -1,0 +1,21 @@
+[
+    {
+        "NorthAve": ["QuezonAve"],
+        "QuezonAve": ["NorthAve", "GMAKamuning"],
+        "GMAKamuning": ["QuezonAve", "CubaoMRT"],
+        "CubaoMRT": ["GMAKamuning", "SantolanAnnapolis", "CubaoLRT2"],
+        "SantolanAnnapolis": ["CubaoMRT", "Ortigas"],
+        "Ortigas": ["SantolanAnnapolis", "ShawBlvd"],
+        "ShawBlvd": ["Ortigas", "Boni"],
+        "Boni": ["ShawBlvd", "Guadalupe"],
+        "Guadalupe": ["Boni", "Buendia"],
+        "Buendia": ["Guadalupe", "Ayala"],
+        "Ayala": ["Buendia", "Magallanes"],
+        "Magallanes": ["Ayala", "TaftAve"],
+        "TaftAve": ["Magallanes", "EDSA_LRT1"],
+
+        "CubaoLRT2": ["CubaoMRT"],
+        "EDSA_LRT1": ["TaftAve"]
+    }
+
+]
