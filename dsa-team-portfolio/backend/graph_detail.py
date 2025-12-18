@@ -1,4 +1,4 @@
-from .doubly_ended_queue import Queue as deque
+from doubly_ended_queue import Queue as deque
 class Graph:
     def __init__(self):
         self.vertices = {}
@@ -82,18 +82,22 @@ class Graph:
 
     def bfs(self, start, end):
         # Breadth-First Search finds the SHORTEST path in an unweighted graph
-
         if start not in self.vertices or end not in self.vertices:
             return None 
 
         visited = set() 
-        queue = deque([start])
+        
+        # Create an instance of the custom Queue.
+        queue = deque() 
+        queue.enqueue(start)
+        
         parent = {start: None}
-
         visited.add(start)
 
-        while queue:
-            current = queue.popleft()
+        while not queue.is_empty():
+            
+            current_node = queue.dequeue()
+            current = current_node.data if current_node else None
 
             if current == end:
                 break      
@@ -102,13 +106,20 @@ class Graph:
                 if neighbor not in visited:
                     visited.add(neighbor) 
                     parent[neighbor] = current
-                    queue.append(neighbor)
+                    # The neighbor is added to the end of the queue for later processing.
+                    queue.enqueue(neighbor)
 
+        # Path reconstruction
         path = []
-        while end is not None:
-            path.append(end)
-            end = parent.get(end)
+        if end not in parent:
+            return None
+            
+        curr_path_node = end
+        while curr_path_node is not None:
+            path.append(curr_path_node)
+            curr_path_node = parent.get(curr_path_node)
 
+        # Reverse the list to show the path from start to end.
         return path[::-1]
 
     def dfs(self, start, end):
@@ -143,65 +154,3 @@ class Graph:
             end = parent.get(end)
 
         return path[::-1]
-
-
-
-my_graph = Graph()
-my_graph.add_vertex('David')
-my_graph.add_vertex('Miriam')
-my_graph.add_vertex('Martin')
-
-my_graph.add_edge('David', 'Miriam')
-my_graph.add_edge('David', 'Martin')
-my_graph.add_edge('Miriam', 'Martin')
-
-print(my_graph.vertices)
-
-# Find shortest path using BFS
-bfs_path = my_graph.bfs('David', 'Martin')
-print("\nBFS Path (Shortest Path):")
-print(bfs_path)
-
-# Find a path using DFS
-dfs_path = my_graph.dfs('David', 'Martin')
-print("\nDFS Path:")
-print(dfs_path)
-
-# Demonstrate dictionary methods
-print("\n=== Dictionary Methods Demo ===")
-
-# dict.keys() - Get all vertices
-print(f"All vertices: {my_graph.get_all_vertices()}")
-
-# dict.get() - Get neighbors
-print(f"David's neighbors: {my_graph.get_neighbors('David')}")
-
-# dict.items() - Get all edges
-print(f"All edges: {my_graph.get_all_edges()}")
-
-# len() - Count vertices
-print(f"Number of vertices: {my_graph.vertex_count()}")
-
-# 'in' operator - Check if vertex exists
-print(f"Has 'David'? {my_graph.has_vertex('David')}")
-print(f"Has 'Alice'? {my_graph.has_vertex('Alice')}")
-
-# Display graph
-my_graph.display_graph()
-
-
-
-# dict.pop() - Remove vertex
-print("\nRemoving 'Martin'...")
-my_graph.remove_vertex('Martin')
-my_graph.display_graph()
-
-# Update vertex name
-print("\nUpdating 'David' to 'Dave'...")
-my_graph.update_vertex('David', 'Dave')
-my_graph.display_graph()
-
-# dict.clear() - Clear all vertices
-print("\nClearing graph...")
-my_graph.clear_graph()
-my_graph.display_graph()
