@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="queue-section">
+  <div class="queue-box">
+    <h1 class="gradient-text">Metro Route Finder</h1>
+    <p class="queue-subtitle">Navigate the city with efficiency and ease 🚇</p>
+
+    <form method="POST" class="queue-form">
+      <div class="form-group">
+        <label for="start_station">Starting Station:</label>
+        <input type="text" id="start_station" name="start_station" placeholder="Enter origin station..." required>
+      </div>
+
+      <div class="form-group">
+        <label for="end_station">Destination Station:</label>
+        <input type="text" id="end_station" name="end_station" placeholder="Enter destination station..." required>
+      </div>
+
+      <button type="submit" name="get_route" class="btn-primary">Find Fastest Route</button>
+    </form>
+
+    <div class="queue-line">
+      <h2>Your Route:</h2>
+      <ul>
+        {% if message %}
+          <li class="queue-item error" style="color: #ff4d4d;">{{ message }}</li>
+        {% elif route %}
+          {% for station in route %}
+            <li class="queue-item">
+              {{ station }}
+              {% if not loop.last %}
+                <span class="arrow">↓</span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        {% else %}
+          <li class="queue-item empty">Enter stations to calculate the shortest path</li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

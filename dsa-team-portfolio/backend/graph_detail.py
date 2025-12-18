@@ -1,4 +1,4 @@
-from doubly_ended_queue import Queue as deque
+from .doubly_ended_queue import Queue as deque
 class Graph:
     def __init__(self):
         self.vertices = {}

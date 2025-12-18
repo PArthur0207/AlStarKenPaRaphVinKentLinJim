@@ -7,6 +7,7 @@ app = Flask(__name__)
 customer_queue = CustomerQueue()
 tree_manager = BinaryTreeManager()
 dict_search = DictionarySearch()
+route_search = MetroMap()
 
 @app.route('/')
 def index():
@@ -27,7 +28,6 @@ def works():
         works = []
     return render_template('works.html', works = works)
 
-@app.route('/queue')
 @app.route('/queue', methods=["GET", "POST"])
 def queue_page():
     if request.method == "POST":
@@ -157,6 +157,25 @@ def dictionary_page():
         words=words,
         tree=dict_search.bst.root
     )
+
+@app.route('/graph', methods=["GET", "POST"])
+def graph_page():
+    route = None
+    message = None
+
+    if request.method == "POST":
+        start = request.form.get("start_station")
+        end = request.form.get("end_station")
+
+        # result will be either the list or the "Invalid station" string
+        result = route_search.get_route(start, end)
+
+        if isinstance(result, str):
+            message = result
+        else:
+            route = result
+    
+    return render_template("graph.html", route=route, message=message)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000)) 
