@@ -1170,13 +1170,9 @@ body {
 }
 
 .station-dot {
-    fill: var(--bg-navy);
-    stroke: var(--white);
-    stroke-width: 1.5;
-    r: 5;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Subtle outer glow for all stations */
-    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    fill: #0b102a;
+    stroke: #ffffff;
+    stroke-width: 1.4;
 }
 
 /* HOVER GLOW: The "Glowing" effect when you hover a station */
@@ -1232,14 +1228,16 @@ body {
 
 /* 6. STATION LABELS (FONT FIX) */
 .station-text {
-    font-size: 9px;
-    font-weight: 800;
-    fill: var(--white);
+    font-family: "Inter", "Segoe UI", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    fill: #e6ebff;
     paint-order: stroke;
-    stroke: var(--bg-deep);
-    stroke-width: 3px;
-    stroke-linecap: round;
-    letter-spacing: 0.5px;
+    stroke: rgba(0,0,0,0.45);
+    stroke-width: 2px;
+    pointer-events: none;
+    dominant-baseline: middle;
 }
 
 /* 7. SIDEBAR & BUTTON */
@@ -1263,4 +1261,145 @@ body {
 .cyber-button:hover {
     box-shadow: 0 0 20px var(--method-cyan);
     background: var(--white);
+}
+/* ==========================
+   Trip Planner (Graph) UI
+   ========================== */
+.cyber-metro-section {
+  padding: 40px 20px;
+}
+
+.cyber-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.map-layout-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+  align-items: start;
+}
+
+.svg-map-area {
+  background: linear-gradient(180deg, rgba(2,10,30,0.6), rgba(0,20,50,0.45));
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.svg-map-area svg {
+  width: 100%;
+  height: 720px;
+  display: block;
+}
+
+.cyber-panel {
+  background: linear-gradient(180deg, rgba(1,12,30,0.95), rgba(2,28,56,0.9));
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(0, 115, 255, 0.12);
+  border: 1px solid rgba(110,203,255,0.08);
+}
+
+.panel-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #bfeaff;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+
+.selection-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.input-display {
+  background: rgba(255,255,255,0.03);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.input-display label {
+  display: block;
+  font-size: 0.65rem;
+  color: #8fbfe8;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.8px;
+}
+
+.glow-text {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #e6f9ff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(110,203,255,0.02));
+}
+
+.cyber-button {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cyber-button.secondary-reset {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #a7dfff;
+  box-shadow: none;
+  padding: 10px 14px;
+  font-weight: 700;
+}
+
+.itinerary-results {
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.path-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.path-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(110,203,255,0.01));
+}
+
+.step-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: 0 0 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4) inset;
+  border: 2px solid rgba(255,255,255,0.08);
+}
+
+.step-dot.lrt1 { background: var(--lrt1-yellow); box-shadow: 0 0 10px var(--lrt1-yellow); }
+.step-dot.lrt2 { background: var(--lrt2-purple); box-shadow: 0 0 10px var(--lrt2-purple); }
+.step-dot.mrt3 { background: var(--mrt3-blue); box-shadow: 0 0 10px var(--mrt3-blue); }
+
+.animate-up { animation: slideUp 360ms cubic-bezier(.2,.9,.2,1); }
+@keyframes slideUp { from { transform: translateY(6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* responsive */
+@media (max-width: 980px) {
+  .map-layout-wrapper { grid-template-columns: 1fr; }
+  .svg-map-area svg { height: 480px; }
 }
