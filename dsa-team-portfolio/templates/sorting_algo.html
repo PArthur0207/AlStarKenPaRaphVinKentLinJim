@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="sorting-section">
+  <div class="container">
+    <header class="sorting-header">
+      <h1 class="gradient-text">Sorting Algorithm Visualizer</h1>
+      <p class="subtitle">Understand how sorting algorithms work step by step</p>
+    </header>
+
+    <div class="sorting-container">
+      <div class="sorting-controls">
+        <h2 class="control-title">Setup</h2>
+        <form method="POST" class="sorting-form">
+          <div class="form-group">
+            <label for="algorithm">Select Algorithm:</label>
+            <select id="algorithm" name="algorithm" class="form-select">
+              <option value="bubble">Bubble Sort</option>
+              <option value="selection">Selection Sort</option>
+              <option value="insertion">Insertion Sort</option>
+              <option value="merge">Merge Sort</option>
+              <option value="quick">Quick Sort</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="size">Array Size (5-50):</label>
+            <input 
+              type="number" 
+              id="size" 
+              name="size" 
+              min="5" 
+              max="50" 
+              value="10" 
+              class="form-input"
+            >
+          </div>
+
+          <button type="submit" class="btn-run">
+            <i class="fas fa-play"></i> Generate & Run
+          </button>
+        </form>
+      </div>
+
+      <!-- Results Display -->
+      <div class="sorting-results">
+        {% if result %}
+          {% if result.error %}
+            <div class="error-message">
+              <strong>Error:</strong> {{ result.error }}
+            </div>
+          {% else %}
+            <!-- Algorithm Info -->
+            <div class="algo-card">
+              <div class="algo-header">
+                <h2 class="algo-title gradient-text">{{ result.algorithm }}</h2>
+              </div>
+              
+              <div class="algo-info">
+                <div class="info-item">
+                  <span class="label">Original Array:</span>
+                  <span class="value">[{{ result.original|join(', ') }}]</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Sorted Array:</span>
+                  <span class="value">[{{ result.sorted|join(', ') }}]</span>
+                </div>
+              </div>
+
+              <!-- Metrics -->
+              <div class="metrics">
+                <div class="metric">
+                  <span class="metric-label">Comparisons:</span>
+                  <span class="metric-value">{{ result.comparisons }}</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Swaps/Shifts:</span>
+                  <span class="metric-value">
+                    {% if result.swaps > 0 %}
+                      {{ result.swaps }} swaps
+                    {% elif result.shifts > 0 %}
+                      {{ result.shifts }} shifts
+                    {% else %}
+                      0
+                    {% endif %}
+                  </span>
+                </div>
+                <div class="metric">
+                  <span class="metric-label">Total Steps:</span>
+                  <span class="metric-value">{{ result.total_steps }}</span>
+                </div>
+              </div>
+
+              <!-- Steps Display -->
+              <div class="steps-container">
+                <h3 class="steps-title">Step-by-Step Execution</h3>
+                <pre class="steps-output">
+Original Array: [{{ result.original|join(', ') }}]
+
+{% for step in result.steps %}{{ step }}
+{% endfor %}
+
+Sorted Array: [{{ result.sorted|join(', ') }}]
+                </pre>
+              </div>
+
+              <!-- Visualization Placeholder -->
+              <div class="visualization-placeholder">
+                <p>📊 Visualization will be added here for animations and visual representation</p>
+              </div>
+            </div>
+          {% endif %}
+        {% else %}
+          <div class="placeholder">
+            <div class="placeholder-content">
+              <i class="fas fa-sort"></i>
+              <p>Select an algorithm and click "Generate & Run" to see the step-by-step sorting process</p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

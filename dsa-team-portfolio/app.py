@@ -1,5 +1,6 @@
 from flask import Flask, render_template, send_from_directory, request, redirect, url_for, jsonify
 from backend import *
+from backend.sorting_manager import SortingManager
 import json
 import os
 
@@ -184,6 +185,15 @@ def graph_page():
             route = result
     
     return render_template("graph.html", route=route, message=message, stations=stations)
+
+@app.route('/sorting-algo', methods=["GET", "POST"])
+def sorting_algo():
+    result = None
+    if request.method == "POST":
+        algorithm = request.form.get("algorithm", "bubble")
+        size = int(request.form.get("size", 10))
+        result = SortingManager.run_sort(algorithm, size)
+    return render_template("sorting_algo.html", result=result)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000)) 

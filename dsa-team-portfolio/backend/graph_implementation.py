@@ -1,5 +1,6 @@
 from .graph_detail import Graph
 import json
+import os
 
 class MetroMap:
     def __init__(self):
@@ -8,7 +9,10 @@ class MetroMap:
         self._build_network()
 
     def _build_network(self):
-        with open('dsa-team-portfolio/data/stations.json', 'r') as f:
+        # Get the directory of this file, then navigate to data folder
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        data_path = os.path.join(current_dir, '..', 'data', 'stations.json')
+        with open(data_path, 'r') as f:
             data = json.load(f)
             
         lrt1 = data["lrt1"]

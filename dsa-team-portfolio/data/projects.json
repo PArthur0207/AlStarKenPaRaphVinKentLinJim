@@ -18,5 +18,10 @@
     "title": "Metro Train Map",
     "description": "A graph system that finds the most efficient route from one station to another using BFS and DFS.",
     "url": "/graph"
+  },
+  {
+    "title": "Sorting Algorithm Visualizer",
+    "description": "Step-by-step visualization of sorting algorithms (Bubble, Selection, Insertion, Merge, Quick Sort). Shows comparisons, swaps/shifts, and array state at each step.",
+    "url": "/sorting-algo"
   }
 ]
