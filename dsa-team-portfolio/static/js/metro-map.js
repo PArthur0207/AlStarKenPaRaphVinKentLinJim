@@ -1,6 +1,6 @@
 /**
  * METRO MANILA 2026 - LOGIC & COORDINATES
- * Fixes: Doroteo Jose / Recto Alignment
+ * Fixes: Doroteo Jose/Recto & Cubao Alignment
  */
 
 let startStation = null;
@@ -17,11 +17,13 @@ function distributeStations() {
         'mrt3': document.getElementById('path-mrt3')
     };
 
-    // VITAL INTERSECTIONS (Hub Pins)
-    // FIX: Changed y from 450 to 380 to move the intersection above Carriedo
-    const HUB_RECTO_DJOSE = { x: 250, y: 380 }; 
-    const HUB_CUBAO = { x: 750, y: 350 };       
-    const HUB_TAFT_EDSA = { x: 250, y: 650 };    
+    // VITAL INTERSECTIONS (Hub Pins) - Fixed to match actual line intersections
+    // Doroteo Jose/Recto: LRT1 (x=250) meets LRT2 at start (250,210)
+    const HUB_RECTO_DJOSE = { x: 250, y: 210 }; 
+    // Araneta Center-Cubao: LRT2 and MRT3 both reach (750, 300)
+    const HUB_CUBAO = { x: 750, y: 300 };       
+    // EDSA/Taft Avenue: LRT1 (x=250) meets MRT3 at (250, 500)
+    const HUB_TAFT_EDSA = { x: 250, y: 500 };    
 
     Object.keys(paths).forEach(line => {
         const path = paths[line];
@@ -43,7 +45,6 @@ function distributeStations() {
                 pt = HUB_TAFT_EDSA;
             } else {
                 // 2. SPACE REMAINING STATIONS
-                // We use a specific distribution to ensure they follow the SVG track path
                 const padding = 0.08;
                 const distance = (index / (nodes.length - 1)) * (totalLength * (1 - 2*padding)) + (totalLength * padding);
                 pt = path.getPointAtLength(distance);
@@ -56,21 +57,21 @@ function distributeStations() {
             const isEven = index % 2 === 0;
 
             if (line === 'lrt1') {
-                text.setAttribute('dx', '-12');
+                text.setAttribute('dx', '-15');
                 text.style.textAnchor = 'end';
             } else if (line === 'mrt3') {
-                text.setAttribute('dx', '12');
+                // MRT3 is on the right, move labels to the right of the line
+                text.setAttribute('dx', '15');
                 text.style.textAnchor = 'start';
             } else {
-                // Stagger LRT2 labels so they don't overlap the angled path
-                text.setAttribute('dy', isEven ? '-12' : '-25');
+                // LRT2: Stagger labels above/below the diagonal line
+                text.setAttribute('dy', isEven ? '-15' : '-28');
                 text.style.textAnchor = 'middle';
             }
         });
     });
 }
 
-// Selection logic remains the same
 function selectStation(name, element) {
     const startIn = document.getElementById('start_input');
     const endIn = document.getElementById('end_input');
