@@ -18,9 +18,9 @@
                     </defs>
 
                     <g id="base-tracks">
-                        <path id="path-lrt1" class="track lrt1-track" d="M 450,50 L 250,50 L 250,770" />
-                        <path id="path-lrt2" class="track lrt2-track" d="M 250,210 L 520,300 L 750,300 L 880,200" />
-                        <path id="path-mrt3" class="track mrt3-track" d="M 650,50 L 750,170 L 750,420 L 630,480 L 520,500 L 250,500" />
+                        <path id="path-lrt1" class="track lrt1-track" d="M 450,50 L  400,60 L  350,80 L  300,100  L 250,150 L 250,550 L 300,770" />
+                        <path id="path-lrt2" class="track lrt2-track" d="M 250,260 L 520,220 L 750,220 L 880,180" />
+                        <path id="path-mrt3" class="track mrt3-track" d="M 480,50 L 630,170 L 630,380 L 630,400 L 520,480 L 300,515 L 250,530" />
                     </g>
 
                     <g id="stations-layer">
@@ -55,15 +55,6 @@
                 <form method="POST" action="/graph" id="routeForm">
                     <input type="hidden" name="start_station" id="start_input">
                     <input type="hidden" name="end_station" id="end_input">
-
-                    <div class="input-display" style="margin-bottom: 20px;">
-                        <label>SEARCH STRATEGY</label>
-                        <select name="search_type">
-                            <option value="BFS">BFS (Shortest Route)</option>
-                            <option value="DFS">DFS (Alternative Route)</option>
-                        </select>
-                    </div>
-
                     <button type="submit" class="cyber-button">
                         CALCULATE ROUTE 🚀
                     </button>
@@ -92,6 +83,7 @@
 
 <script src="{{ url_for('static', filename='js/metro-map.js') }}"></script>
 <script>
+    // This part runs AFTER the page reloads with route data
     {% if route %}
         const routeData = {{ route|map(attribute='name')|list|tojson }};
         window.addEventListener('load', () => highlightRouteOnMap(routeData));

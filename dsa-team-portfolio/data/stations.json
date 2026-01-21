@@ -34,7 +34,7 @@
     "J. Ruiz",
     "Gilmore",
     "Betty Go-Belmonte",
-    "Araneta Center-Cubao",
+    "Cubao",
     "Anonas",
     "Katipunan",
     "Santolan",
@@ -45,9 +45,8 @@
     "North Avenue",
     "Quezon Avenue",
     "GMA-Kamuning",
-    "Araneta Center-Cubao",
+    "Cubao",
     "Santolan-Annapolis",
-    "Araneta Center-Cubao",
     "Ortigas",
     "Shaw Boulevard",
     "Boni",
@@ -59,7 +58,7 @@
   ],
   "interchanges": [
     ["Doroteo Jose-Recto", "Doroteo Jose-Recto"],
-    ["Araneta Center-Cubao", "Araneta Center-Cubao"],
+    ["Cubao", "Cubao"],
     ["EDSA-Taft Avenue", "EDSA-Taft Avenue"]
   ]
 }

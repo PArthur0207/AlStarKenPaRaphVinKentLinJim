@@ -8,6 +8,7 @@ let endStation = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     distributeStations();
+    hideInterchangeDuplicateLabels();
 });
 
 function distributeStations() {
@@ -19,11 +20,11 @@ function distributeStations() {
 
     // VITAL INTERSECTIONS (Hub Pins) - Fixed to match actual line intersections
     // Doroteo Jose/Recto: LRT1 (x=250) meets LRT2 at start (250,210)
-    const HUB_RECTO_DJOSE = { x: 250, y: 210 }; 
-    // Araneta Center-Cubao: LRT2 and MRT3 both reach (750, 300)
-    const HUB_CUBAO = { x: 750, y: 300 };       
+    const HUB_RECTO_DJOSE = { x: 250, y: 260 }; 
+    // Cubao: Intersection of LRT2 and MRT3 at (750, 300)
+    const HUB_CUBAO = { x: 630, y: 220 };       
     // EDSA/Taft Avenue: LRT1 (x=250) meets MRT3 at (250, 500)
-    const HUB_TAFT_EDSA = { x: 250, y: 500 };    
+    const HUB_TAFT_EDSA = { x: 250, y: 530 };    
 
     Object.keys(paths).forEach(line => {
         const path = paths[line];
@@ -39,7 +40,7 @@ function distributeStations() {
             // 1. PIN THE HUBS
             if (name.includes("Recto") || name.includes("Doroteo Jose")) {
                 pt = HUB_RECTO_DJOSE;
-            } else if (name.includes("Araneta Center-Cubao")) {
+            } else if (name.includes("Cubao")) {
                 pt = HUB_CUBAO;
             } else if (name.includes("Taft Avenue") || name === "EDSA") {
                 pt = HUB_TAFT_EDSA;
@@ -109,8 +110,85 @@ function resetSelection() {
 function highlightRouteOnMap(routeNames) {
     const svg = document.getElementById('metro-svg');
     svg.classList.add('route-active');
-    routeNames.forEach(name => {
+    
+    // Highlight each station on the route with animation
+    routeNames.forEach((name, index) => {
         const node = document.querySelector(`[data-name="${name}"]`);
-        if (node) node.classList.add('on-route');
+        if (node) {
+            node.classList.add('on-route');
+            // Add staggered animation timing for each station
+            node.style.animationDelay = `${index * 0.1}s`;
+        }
+    });
+    
+    // Draw connecting lines between consecutive stations on route
+    const baseGroup = svg.querySelector('g#base-tracks');
+    const routeGroup = document.createElement('g');
+    routeGroup.id = 'route-path';
+    routeGroup.setAttribute('style', 'pointer-events: none;');
+    
+    for (let i = 0; i < routeNames.length - 1; i++) {
+        const startNode = document.querySelector(`[data-name="${routeNames[i]}"]`);
+        const endNode = document.querySelector(`[data-name="${routeNames[i + 1]}"]`);
+        
+        if (startNode && endNode) {
+            const startTransform = startNode.getAttribute('transform');
+            const endTransform = endNode.getAttribute('transform');
+            
+            // Parse coordinates from transform
+            const startMatch = startTransform.match(/translate\(([\d.]+),\s*([\d.]+)\)/);
+            const endMatch = endTransform.match(/translate\(([\d.]+),\s*([\d.]+)\)/);
+            
+            if (startMatch && endMatch) {
+                const x1 = parseFloat(startMatch[1]);
+                const y1 = parseFloat(startMatch[2]);
+                const x2 = parseFloat(endMatch[1]);
+                const y2 = parseFloat(endMatch[2]);
+                
+                // Create animated line segment
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', x1);
+                line.setAttribute('y1', y1);
+                line.setAttribute('x2', x2);
+                line.setAttribute('y2', y2);
+                line.setAttribute('stroke', '#00ff00');
+                line.setAttribute('stroke-width', '2.5');
+                line.setAttribute('stroke-linecap', 'round');
+                line.setAttribute('opacity', '0.8');
+                line.setAttribute('class', 'route-segment');
+                line.setAttribute('style', `filter: drop-shadow(0 0 8px #00ff00) drop-shadow(0 0 15px #00ff00); animation: routeFlow 1.5s ease-in-out ${i * 0.15}s infinite;`);
+                
+                routeGroup.appendChild(line);
+            }
+        }
+    }
+    
+    baseGroup.parentNode.insertBefore(routeGroup, baseGroup.nextSibling);
+}
+
+// Hide duplicate interchange station labels - keep only one per interchange
+function hideInterchangeDuplicateLabels() {
+    const interchanges = {
+        'Doroteo Jose-Recto': true,
+        'Cubao': true,
+        'EDSA-Taft Avenue': true
+    };
+
+    const seenInterchanges = {};
+    
+    document.querySelectorAll('.station-node-group').forEach(node => {
+        const name = node.getAttribute('data-name');
+        
+        if (interchanges[name]) {
+            if (seenInterchanges[name]) {
+                // Hide duplicate interchange labels (keep text hidden but keep clickable)
+                const text = node.querySelector('.station-text');
+                if (text) {
+                    text.style.display = 'none';
+                }
+            } else {
+                seenInterchanges[name] = true;
+            }
+        }
     });
 }

@@ -1695,6 +1695,67 @@ option[value="DFS"] {
   font-weight: bold;
 }
 
+/* Route Highlight Glow Effect */
+.track.route-highlight {
+  filter: drop-shadow(0 0 8px currentColor) drop-shadow(0 0 15px currentColor) !important;
+  stroke-width: 3.5 !important;
+  opacity: 1 !important;
+}
+
+.lrt1-track.route-highlight {
+  stroke: #d4534f !important;
+  filter: drop-shadow(0 0 8px #d4534f) drop-shadow(0 0 15px #d4534f) drop-shadow(0 0 25px rgba(212, 83, 79, 0.6)) !important;
+}
+
+.lrt2-track.route-highlight {
+  stroke: #0099cc !important;
+  filter: drop-shadow(0 0 8px #0099cc) drop-shadow(0 0 15px #0099cc) drop-shadow(0 0 25px rgba(0, 153, 204, 0.6)) !important;
+}
+
+.mrt3-track.route-highlight {
+  stroke: #00a86b !important;
+  filter: drop-shadow(0 0 8px #00a86b) drop-shadow(0 0 15px #00a86b) drop-shadow(0 0 25px rgba(0, 168, 107, 0.6)) !important;
+}
+
+/* Route Path Animation */
+@keyframes routeFlow {
+  0% {
+    stroke-dasharray: 0, 100;
+    opacity: 0.3;
+  }
+  50% {
+    stroke-dasharray: 100, 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 0, 100;
+    opacity: 0.3;
+  }
+}
+
+#route-path .route-segment {
+  stroke-dasharray: 10, 5;
+  animation: routeFlow 1.5s ease-in-out infinite;
+}
+
+/* Highlight stations on route */
+.station-node-group.on-route .station-dot {
+  r: 6.5;
+  filter: drop-shadow(0 0 10px #00ff00) drop-shadow(0 0 20px #00ff00);
+  animation: stationPulse 1s ease-in-out infinite;
+}
+
+@keyframes stationPulse {
+  0%, 100% {
+    r: 6.5;
+    filter: drop-shadow(0 0 10px #00ff00) drop-shadow(0 0 20px #00ff00);
+  }
+  50% {
+    r: 8;
+    filter: drop-shadow(0 0 15px #00ff00) drop-shadow(0 0 30px #00ff00) drop-shadow(0 0 40px rgba(0, 255, 0, 0.5));
+  }
+}
+
 /* ==========================
    Responsive Logic
    ========================== */
