@@ -16,7 +16,7 @@
   },
   {
     "title": "Metro Train Map",
-    "description": "A graph system that finds the most efficient route from one station to another using BFS and DFS.",
+    "description": "A graph system that finds the most efficient route from one station to another using BFS.",
     "url": "/graph"
   },
   {
