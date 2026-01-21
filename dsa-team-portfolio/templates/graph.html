@@ -19,12 +19,10 @@
 
                     <g id="base-tracks">
                         <path id="path-lrt1" class="track lrt1-track" d="M 250,50 L 250,700 Q 250,770 350,770" />
-                        
-                        <path id="path-lrt2" class="track lrt2-track" d="M 250,380 L 450,450 L 750,350 L 950,200" />
-                        
+                        <path id="path-lrt2" class="track lrt2-track" d="M 250,450 L 450,450 L 750,350 L 950,200" />
                         <path id="path-mrt3" class="track mrt3-track" d="M 250,50 L 750,50 L 750,650 L 250,650" />
                     </g>
-                    
+
                     <g id="stations-layer">
                         {% for line_id, line_stations in stations.items() %}
                             {% if line_id != 'interchanges' %}
@@ -57,6 +55,15 @@
                 <form method="POST" action="/graph" id="routeForm">
                     <input type="hidden" name="start_station" id="start_input">
                     <input type="hidden" name="end_station" id="end_input">
+
+                    <div class="input-display" style="margin-bottom: 20px;">
+                        <label>SEARCH STRATEGY</label>
+                        <select name="search_type">
+                            <option value="BFS">BFS (Shortest Route)</option>
+                            <option value="DFS">DFS (Alternative Route)</option>
+                        </select>
+                    </div>
+
                     <button type="submit" class="cyber-button">
                         CALCULATE ROUTE 🚀
                     </button>
@@ -85,7 +92,6 @@
 
 <script src="{{ url_for('static', filename='js/metro-map.js') }}"></script>
 <script>
-    // This part runs AFTER the page reloads with route data
     {% if route %}
         const routeData = {{ route|map(attribute='name')|list|tojson }};
         window.addEventListener('load', () => highlightRouteOnMap(routeData));
