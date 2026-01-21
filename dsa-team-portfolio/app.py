@@ -186,7 +186,6 @@ def graph_page():
     
     return render_template("graph.html", route=route, message=message, stations=stations)
 
-
 @app.route('/sorting-algo', methods=["GET", "POST"])
 def sorting_algo():
     result = None

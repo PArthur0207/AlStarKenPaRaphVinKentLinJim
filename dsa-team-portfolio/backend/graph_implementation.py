@@ -9,10 +9,9 @@ class MetroMap:
         self._build_network()
 
     def _build_network(self):
-        # Locate the data folder relative to this file
+        # Get the directory of this file, then navigate to data folder
         current_dir = os.path.dirname(os.path.abspath(__file__))
         data_path = os.path.join(current_dir, '..', 'data', 'stations.json')
-        
         with open(data_path, 'r') as f:
             data = json.load(f)
             
@@ -21,44 +20,44 @@ class MetroMap:
         mrt3 = data["mrt3"]
         interchanges = data["interchanges"]
 
-        # 1. Build station → line lookup
-        for s in lrt1: self.station_to_line[s] = "lrt1"
-        for s in lrt2: self.station_to_line[s] = "lrt2"
-        for s in mrt3: self.station_to_line[s] = "mrt3"
+        # Build station → line lookup
+        for s in lrt1:
+            self.station_to_line[s] = "lrt1"
+        for s in lrt2:
+            self.station_to_line[s] = "lrt2"
+        for s in mrt3:
+            self.station_to_line[s] = "mrt3"
 
-        # 2. Add all stations as vertices
+        # Add all stations as vertices
         for station in lrt1 + lrt2 + mrt3:
             self.graph.add_vertex(station)
 
-        # 3. Connect stations within the same line (Standard route)
+        # Connect stations within the same line
         for line in [lrt1, lrt2, mrt3]:
             for i in range(len(line) - 1):
                 self.graph.add_edge(line[i], line[i + 1])
-                # add_edge in our Graph class is already bidirectional
+                self.graph.add_edge(line[i + 1], line[i])
 
-        # 4. Connect interchanges explicitly (Bridging the lines)
-        for pair in interchanges:
-            if len(pair) == 2:
-                u, v = pair[0], pair[1]
-                if u in self.graph.vertices and v in self.graph.vertices:
-                    self.graph.add_edge(u, v)
+        # Add interchange connections
+        for a, b in interchanges:
+            self.graph.add_edge(a, b)
+            self.graph.add_edge(b, a)
 
-    def get_route(self, start, end, method="BFS"):
+    def get_route(self, start, end, method):
         if start not in self.graph.vertices or end not in self.graph.vertices:
-            return None
+            return "Station not found."
 
-        # Shortest route is ALWAYS BFS for unweighted graphs like this
-        path = self.graph.bfs(start, end)
+        if method == "DFS":
+            path = self.graph.dfs(start, end)
+        else:
+            path = self.graph.bfs(start, end)
 
-        if not path:
-            return None
-
-        # Attach line information for the frontend glow-effects
+        # Attach line info for UI rendering
         route_with_lines = []
         for station in path:
             route_with_lines.append({
                 "name": station,
-                "line": self.station_to_line.get(station, "unknown")
+                "line": self.station_to_line.get(station)
             })
 
         return route_with_lines
