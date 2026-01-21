@@ -159,32 +159,48 @@ def dictionary_page():
         tree=dict_search.bst.root
     )
 
-@app.route('/graph', methods=["GET", "POST"])
-def graph_page():
-    data_file = os.path.join(app.root_path, 'data', 'stations.json')
+@app.route('/')
+@app.route('/graph', methods=['GET', 'POST'])
+def graph_view():
+    # 1. Load station data for the sidebar and SVG rendering
+    # We navigate to the 'data' folder relative to this script
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    stations_json_path = os.path.join(current_dir, 'data', 'stations.json')
+    
     try:
-        with open(data_file, 'r', encoding='utf-8') as f:
-            stations = json.load(f)
-    except Exception:
-        stations = []
+        with open(stations_json_path, 'r') as f:
+            stations_data = json.load(f)
+    except FileNotFoundError:
+        return "Error: stations.json not found in data folder.", 404
 
     route = None
-    message = None
-
-    if request.method == "POST":
-        start = request.form.get("start_station")
-        end = request.form.get("end_station")
-        search_type = request.form.get("search_type")
-
-        # result will be either the list or the "Invalid station" string
-        result = route_search.get_route(start, end, method=search_type)
-
-        if isinstance(result, str):
-            message = result
-        else:
-            route = result
     
-    return render_template("graph.html", route=route, message=message, stations=stations)
+    # 2. Handle the "Calculate Route" request
+    if request.method == 'POST':
+        start_node = request.form.get('start_station')
+        end_node = request.form.get('end_station')
+        
+        # We use the BFS-powered logic from our backend to find the shortest path
+        if start_node and end_node:
+            route = metro_system.get_route(start_node, end_node)
+
+    # 3. Render the page with the map and (if calculated) the route
+    return render_template('graph.html', stations=stations_data, route=route)
+
+# API Route (Optional): If you want to fetch routes via JavaScript without reloading
+@app.route('/api/route', methods=['GET'])
+def get_route_api():
+    start = request.args.get('start')
+    end = request.args.get('end')
+    if not start or not end:
+        return jsonify({"error": "Missing start or end station"}), 400
+        
+    route = metro_system.get_route(start, end)
+    return jsonify(route)
+
+if __name__ == '__main__':
+    # Set debug=True during development to see live changes
+    app.run(debug=True, port=5000)
 
 @app.route('/sorting-algo', methods=["GET", "POST"])
 def sorting_algo():

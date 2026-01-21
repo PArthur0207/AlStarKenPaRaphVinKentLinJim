@@ -1657,6 +1657,45 @@ main.container {
 }
 
 /* ==========================
+   Search Strategy Options & Select
+   ========================== */
+.input-display select {
+  background: rgba(255, 255, 255, 0.08);
+  color: #d0d8e8;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 12px;
+  border-radius: 6px;
+  outline: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border 0.3s ease, background 0.3s ease;
+  width: 100%;
+}
+
+.input-display select:focus {
+  border: 1px solid #6ecbff;
+  box-shadow: 0 0 12px rgba(110, 203, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.input-display select:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+option[value="BFS"] {
+  background: rgba(0, 150, 255, 0.9);
+  color: #fff;
+  font-weight: bold;
+}
+
+option[value="DFS"] {
+  background: rgba(255, 0, 150, 0.9);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* ==========================
    Responsive Logic
    ========================== */
 @media (max-width: 900px) {
