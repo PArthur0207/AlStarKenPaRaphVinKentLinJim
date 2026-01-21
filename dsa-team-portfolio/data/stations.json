@@ -9,7 +9,7 @@
     "Blumentritt",
     "Tayuman",
     "Bambang",
-    "Doroteo Jose",
+    "Doroteo Jose-Recto",
     "Carriedo",
     "Central Terminal",
     "United Nations",
@@ -18,7 +18,7 @@
     "Vito Cruz",
     "Gil Puyat",
     "Libertad",
-    "EDSA",
+    "EDSA-Taft Avenue",
     "Baclaran",
     "Redemptorist-Aseana",
     "MIA Road",
@@ -27,7 +27,7 @@
     "Dr. Santos"
   ],
   "lrt2": [
-    "Recto",
+    "Doroteo Jose-Recto",
     "Legarda",
     "Pureza",
     "V. Mapa",
@@ -45,6 +45,7 @@
     "North Avenue",
     "Quezon Avenue",
     "GMA-Kamuning",
+    "Araneta Center-Cubao",
     "Santolan-Annapolis",
     "Ortigas",
     "Shaw Boulevard",
@@ -53,11 +54,11 @@
     "Buendia",
     "Ayala",
     "Magallanes",
-    "Taft Avenue"
+    "EDSA-Taft Avenue"
   ],
   "interchanges": [
-    ["Doroteo Jose", "Recto"],
+    ["Doroteo Jose-Recto", "Doroteo Jose-Recto"],
     ["Araneta Center-Cubao", "Araneta Center-Cubao"],
-    ["EDSA", "Taft Avenue"]
+    ["EDSA-Taft Avenue", "EDSA-Taft Avenue"]
   ]
 }

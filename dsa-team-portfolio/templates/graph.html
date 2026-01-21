@@ -18,13 +18,11 @@
                     </defs>
 
                     <g id="base-tracks">
-                        <path id="path-lrt1" class="track lrt1-track" d="M 250,50 L 250,700 Q 250,770 350,770" />
-                        
-                        <path id="path-lrt2" class="track lrt2-track" d="M 250,380 L 450,450 L 750,350 L 950,200" />
-                        
-                        <path id="path-mrt3" class="track mrt3-track" d="M 250,50 L 750,50 L 750,650 L 250,650" />
+                        <path id="path-lrt1" class="track lrt1-track" d="M 450,50 L 250,50 L 250,770" />
+                        <path id="path-lrt2" class="track lrt2-track" d="M 250,210 L 520,300 L 750,300 L 880,200" />
+                        <path id="path-mrt3" class="track mrt3-track" d="M 650,50 L 750,170 L 750,420 L 630,480 L 520,500 L 250,500" />
                     </g>
-                    
+
                     <g id="stations-layer">
                         {% for line_id, line_stations in stations.items() %}
                             {% if line_id != 'interchanges' %}

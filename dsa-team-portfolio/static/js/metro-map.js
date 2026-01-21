@@ -17,11 +17,13 @@ function distributeStations() {
         'mrt3': document.getElementById('path-mrt3')
     };
 
-    // VITAL INTERSECTIONS (Hub Pins)
-    // FIX: Changed y from 450 to 380 to move the intersection above Carriedo
-    const HUB_RECTO_DJOSE = { x: 250, y: 380 }; 
-    const HUB_CUBAO = { x: 750, y: 350 };       
-    const HUB_TAFT_EDSA = { x: 250, y: 650 };    
+    // VITAL INTERSECTIONS (Hub Pins) - Fixed to match actual line intersections
+    // Doroteo Jose/Recto: LRT1 (x=250) meets LRT2 at start (250,210)
+    const HUB_RECTO_DJOSE = { x: 250, y: 210 }; 
+    // Araneta Center-Cubao: LRT2 and MRT3 both reach (750, 300)
+    const HUB_CUBAO = { x: 750, y: 300 };       
+    // EDSA/Taft Avenue: LRT1 (x=250) meets MRT3 at (250, 500)
+    const HUB_TAFT_EDSA = { x: 250, y: 500 };    
 
     Object.keys(paths).forEach(line => {
         const path = paths[line];
