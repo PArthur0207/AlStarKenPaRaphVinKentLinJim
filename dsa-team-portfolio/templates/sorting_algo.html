@@ -128,11 +128,13 @@ Sorted Array: [{{ result.sorted|join(', ') }}]
           {% endif %}
         {% else %}
           <div class="placeholder">
-            <div class="placeholder-content">
-              <i class="fas fa-sort"></i>
-              <p>Select an algorithm and click "Generate & Run" to see the step-by-step sorting process</p>
-            </div>
-          </div>
+  <p>Select an algorithm and click "Generate & Run" to see the step-by-step sorting process</p>
+  <div class="placeholder-content">
+    <div class="empty-vis-box">
+      <div id="bar-container"><p class="empty-vis-content">The graph will appear here</p></div>
+    </div>
+  </div>
+</div>
         {% endif %}
       </div>
     </div>

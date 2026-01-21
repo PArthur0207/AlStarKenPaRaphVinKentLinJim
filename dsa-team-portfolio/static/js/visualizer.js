@@ -74,9 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, delay);
     }
 
-    function updatePlayButton() {
-        playBtn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i> Pause' : '<i class="fas fa-play"></i> Play';
-    }
+   function updatePlayButton() {
+    playBtn.innerHTML = isPlaying 
+        ? '<i class="fas fa-pause"></i> Pause' 
+        : '<i class="fas fa-play"></i> Play';
+}
 
     playBtn.addEventListener('click', () => {
         if (currentStepIdx >= totalSteps) currentStepIdx = 0;
