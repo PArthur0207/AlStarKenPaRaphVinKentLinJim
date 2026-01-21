@@ -1,6 +1,6 @@
 /**
  * METRO MANILA 2026 - LOGIC & COORDINATES
- * Fixes: Selection tracking and form injection.
+ * Fixes: Doroteo Jose / Recto Alignment
  */
 
 let startStation = null;
@@ -18,7 +18,8 @@ function distributeStations() {
     };
 
     // VITAL INTERSECTIONS (Hub Pins)
-    const HUB_RECTO_DJOSE = { x: 250, y: 450 }; 
+    // FIX: Changed y from 450 to 380 to move the intersection above Carriedo
+    const HUB_RECTO_DJOSE = { x: 250, y: 380 }; 
     const HUB_CUBAO = { x: 750, y: 350 };       
     const HUB_TAFT_EDSA = { x: 250, y: 650 };    
 
@@ -42,6 +43,7 @@ function distributeStations() {
                 pt = HUB_TAFT_EDSA;
             } else {
                 // 2. SPACE REMAINING STATIONS
+                // We use a specific distribution to ensure they follow the SVG track path
                 const padding = 0.08;
                 const distance = (index / (nodes.length - 1)) * (totalLength * (1 - 2*padding)) + (totalLength * padding);
                 pt = path.getPointAtLength(distance);
@@ -49,7 +51,7 @@ function distributeStations() {
 
             node.setAttribute('transform', `translate(${pt.x}, ${pt.y})`);
 
-            // 3. STAGGER LABELS (Font Fix)
+            // 3. STAGGER LABELS
             const text = node.querySelector('.station-text');
             const isEven = index % 2 === 0;
 
@@ -60,6 +62,7 @@ function distributeStations() {
                 text.setAttribute('dx', '12');
                 text.style.textAnchor = 'start';
             } else {
+                // Stagger LRT2 labels so they don't overlap the angled path
                 text.setAttribute('dy', isEven ? '-12' : '-25');
                 text.style.textAnchor = 'middle';
             }
@@ -67,7 +70,7 @@ function distributeStations() {
     });
 }
 
-// THE FUNCTIONAL FIX: Ensures data is actually put into the form
+// Selection logic remains the same
 function selectStation(name, element) {
     const startIn = document.getElementById('start_input');
     const endIn = document.getElementById('end_input');
@@ -75,21 +78,16 @@ function selectStation(name, element) {
     const endDisp = document.getElementById('end_display');
 
     if (!startStation) {
-        // First click: Set Origin
         startStation = name;
-        startIn.value = name; // Sync with hidden form
+        startIn.value = name; 
         startDisp.innerText = name.split(' (')[0];
         element.classList.add('active-start');
-        console.log("Origin set to:", name);
     } else if (!endStation && name !== startStation) {
-        // Second click: Set Destination
         endStation = name;
-        endIn.value = name; // Sync with hidden form
+        endIn.value = name; 
         endDisp.innerText = name.split(' (')[0];
         element.classList.add('active-end');
-        console.log("Destination set to:", name);
     } else {
-        // Third click: Reset to try again
         resetSelection();
         selectStation(name, element);
     }
