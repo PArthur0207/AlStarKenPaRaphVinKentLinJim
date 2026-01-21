@@ -1667,9 +1667,9 @@ main.container {
   align-items: center; 
   justify-content: center; 
   background: rgba(0, 30, 60, 0.5);
-    border: 1px solid rgba(79, 157, 255, 0.3);
+  border: 1px solid rgba(79, 157, 255, 0.3);
   border-radius: 10px;
-  
+  position: relative;
 }
 
 .placeholder p {
@@ -1679,7 +1679,7 @@ main.container {
   font-weight: bold;
   text-align: center;
   position: absolute;
-  top: 35%; 
+  top: 10%; 
   word-wrap: break-word;
   max-width: 600px;
   
@@ -1702,8 +1702,6 @@ main.container {
   text-align: center;
   color: #e5e7eb;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center; 
 }
