@@ -1807,6 +1807,20 @@ option[value="DFS"] {
   }
 }
 
+.map-header {
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.gradient-text {
+  color: #ffff; 
+  font-size: 2rem;
+}
+
+
 /* ==========================
    Responsive Logic
    ========================== */
