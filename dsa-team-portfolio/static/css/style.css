@@ -1391,6 +1391,12 @@ body {
   border: 2px solid rgba(255,255,255,0.08);
 }
 
+.map-header .subtitle {
+    font-size: 1.1rem;
+    color: rgba(79, 157, 255, 0.8);
+    margin: 0;
+}
+
 .step-dot.lrt1 { background: var(--lrt1-yellow); box-shadow: 0 0 10px var(--lrt1-yellow); }
 .step-dot.lrt2 { background: var(--lrt2-purple); box-shadow: 0 0 10px var(--lrt2-purple); }
 .step-dot.mrt3 { background: var(--mrt3-blue); box-shadow: 0 0 10px var(--mrt3-blue); }
